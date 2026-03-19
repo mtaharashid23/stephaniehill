@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Blogs &amp; Articles — Stephanie Hill</title>
+<link rel="stylesheet" href="css/style.css"/>
+<style>
+.page-hero{background:radial-gradient(ellipse 70% 70% at 50% 65%,#0f2040 0%,transparent 60%),var(--deep);}
+.blog-section{padding:110px 70px;background:var(--deep);}
+.blogs-wrap{max-width:1300px;margin:0 auto;}
+
+/* featured */
+.blog-featured{display:grid;grid-template-columns:1fr 1fr;border:1px solid rgba(201,168,76,.1);overflow:hidden;margin-bottom:26px;transition:border-color .4s;}
+.blog-featured:hover{border-color:rgba(201,168,76,.32);}
+.bf-visual{background:linear-gradient(135deg,#1a2a4a 0%,#1a0e2a 100%);display:flex;align-items:center;justify-content:center;min-height:400px;position:relative;overflow:hidden;}
+.bf-num{font-family:var(--font-display);font-size:13rem;font-weight:300;color:rgba(201,168,76,.07);line-height:1;user-select:none;}
+.bf-body{padding:56px 48px;display:flex;flex-direction:column;justify-content:center;}
+.blog-tag{font-size:.58rem;letter-spacing:.26em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;}
+.bf-body h2{font-family:var(--font-display);font-size:clamp(1.7rem,2.8vw,2.3rem);color:var(--white);font-weight:300;line-height:1.25;margin-bottom:18px;}
+.bf-body .s-body{margin-bottom:0;}
+.read-link{display:inline-flex;align-items:center;gap:10px;margin-top:28px;font-size:.63rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);text-decoration:none;transition:gap .3s;}
+.read-link:hover{gap:18px;}
+
+/* cards */
+.blog-cards{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:rgba(201,168,76,.06);}
+.bc{background:var(--deep);padding:48px 40px;position:relative;overflow:hidden;transition:background .4s;}
+.bc:hover{background:rgba(10,22,40,.85);}
+.bc-num{position:absolute;top:20px;right:24px;font-family:var(--font-display);font-size:5.5rem;font-weight:300;color:rgba(201,168,76,.06);line-height:1;pointer-events:none;}
+.bc h3{font-family:var(--font-display);font-size:clamp(1.4rem,2.2vw,1.9rem);color:var(--white);font-weight:300;line-height:1.3;margin-bottom:14px;}
+.bc-div{width:40px;height:1px;background:linear-gradient(to right,var(--gold),transparent);margin:16px 0;}
+.bc .s-body{margin-bottom:0;}
+
+@media(max-width:1024px){.blog-featured{grid-template-columns:1fr;}.bf-visual{min-height:220px;}.bf-body{padding:40px 32px;}.blog-cards{grid-template-columns:1fr;}.blog-section{padding-left:40px;padding-right:40px;}}
+@media(max-width:768px){.blog-section{padding-left:22px;padding-right:22px;padding-top:80px;padding-bottom:80px;}.bc{padding:36px 24px;}.bf-body{padding:32px 24px;}}
+</style>
+</head>
+<body>
+<div class="cursor-dot"></div><div class="cursor-ring"></div><div class="page-transition"></div>
+<nav id="navbar">
+  <a href="index.html" class="nav-logo">Stephanie <span>Hill</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li><li><a href="book.html">About the Book</a></li>
+    <li><a href="author.html">About the Author</a></li><li><a href="blog.html" class="active">Blogs &amp; Articles</a></li>
+    <li><a href="contact.html">Contact Us</a></li>
+  </ul>
+  <div class="hamburger" id="ham"><span></span><span></span><span></span></div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Home</a><div class="mobile-divider"></div><a href="book.html">About the Book</a>
+  <div class="mobile-divider"></div><a href="author.html">About the Author</a><div class="mobile-divider"></div>
+  <a href="blog.html">Blogs &amp; Articles</a><div class="mobile-divider"></div><a href="contact.html">Contact Us</a>
+</div>
+
+<div class="page-hero">
+  <div class="ph-bg-text">STORIES</div>
+  <div class="ph-inner">
+    <div class="s-label">Thoughts &amp; Insights</div>
+    <h1>Blogs <em>&amp; Articles</em></h1>
+  </div>
+</div>
+
+<div class="blog-section">
+  <div class="blogs-wrap">
+    <div class="s-label" data-reveal>Articles</div>
+
+    <!-- Blog 1 featured -->
+    <div class="blog-featured" data-reveal>
+      <div class="bf-visual"><div class="bf-num">01</div></div>
+      <div class="bf-body">
+        <div class="blog-tag">Awareness · Diagnosis</div>
+        <h2>When Your Body Speaks Before You're Ready to Listen</h2>
+        <p class="s-body">Before the diagnosis, before the hospital, before everything changed there were whispers. Fatigue that didn't make sense. Brain fog that lingered. Symptoms that were easy to dismiss, easier to normalize, and almost impossible to explain. Like many women, Stephanie trusted the system. She trusted the tests, the timelines, and the reassurance that everything was "fine." But her story reveals a truth many live through quietly: the body often knows long before we do.</p>
+        <p class="s-body">Healing Tears explores what happens when those signals are missed, not just out of neglect, but because we are taught to push through discomfort, minimize pain, and keep going no matter what. It challenges readers to rethink their relationship with their bodies, not as something that fails them, but as something that communicates, protects, and warns. This is not just a story about illness. It's a reminder to pause, to question, and to listen more closely. Because sometimes, the earliest signs are not small at all; they are the beginning of everything.</p>
+        <a href="#" class="read-link">Read Full Article →</a>
+      </div>
+    </div>
+
+    <!-- Blogs 2+3 -->
+    <div class="blog-cards">
+      <div class="bc" data-reveal>
+        <div class="bc-num">02</div>
+        <div class="blog-tag">Grief · Resilience</div>
+        <h3>Surviving Two Losses at Once</h3>
+        <div class="bc-div"></div>
+        <p class="s-body">There are moments in life that divide everything into before and after. For Stephanie, that moment came in a hospital bed just hours after surviving a life-threatening surgery, when she learned her twin brother had died. In an instant, survival and loss collided. Healing Tears doesn't separate these experiences. It shows how grief and physical recovery can exist at the same time, each intensifying the other. While her body struggled to stabilize, her heart was breaking in ways no medical chart could measure.</p>
+        <p class="s-body">This blog reflects on the kind of layered trauma that leaves no space to process one pain before another arrives. It speaks to those who have had to keep going not because they were ready, but because they had no choice. Stephanie's story reminds us that healing is not linear. It is messy, overlapping, and often overwhelming. But even in that complexity, there is a quiet truth: survival is not just about staying alive. It is about learning how to carry what was lost while continuing forward.</p>
+        <a href="#" class="read-link">Read Full Article →</a>
+      </div>
+      <div class="bc" data-reveal>
+        <div class="bc-num">03</div>
+        <div class="blog-tag">Recovery · Identity</div>
+        <h3>The Part of Healing No One Talks About</h3>
+        <div class="bc-div"></div>
+        <p class="s-body">When the surgeries are over and the treatments end, people expect relief. They expect recovery to look like progress, strength, and a return to normal. But what happens when it doesn't? In Healing Tears, Stephanie explores the lesser-known phase of survivorship: the aftermath. The part where the world moves on, but your body and mind are still trying to catch up. The exhaustion, the hormonal imbalance, the identity shift, and the quiet loneliness that lingers long after the crisis has passed.</p>
+        <p class="s-body">This stage is often invisible. There are no machines, no urgent alarms, no visible markers of struggle. And yet, it can be one of the hardest parts of the journey. This blog speaks to anyone who has felt "left behind" in their own recovery. It offers language to an experience many endure silently. Healing, as Stephanie shows, is not about returning to who you were. It is about learning to live as someone new someone shaped by survival, who is still finding her way forward.</p>
+        <a href="#" class="read-link">Read Full Article →</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer><div class="footer-inner">
+  <a href="index.html" class="footer-logo">Stephanie <span>Hill</span></a>
+  <ul class="footer-nav"><li><a href="index.html">Home</a></li><li><a href="book.html">Book</a></li><li><a href="author.html">Author</a></li><li><a href="blog.html">Blog</a></li><li><a href="contact.html">Contact</a></li></ul>
+  <p class="footer-copy">© 2026 Stephanie Hill. All rights reserved.</p>
+</div></footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+<script>gsap.registerPlugin(ScrollTrigger);</script>
+<script>
+gsap.from('.ph-inner h1',{y:60,opacity:0,duration:1,ease:'power3.out',delay:.4});
+gsap.from('.ph-inner .s-label',{y:30,opacity:0,duration:.8,ease:'power3.out',delay:.2});
+document.querySelectorAll('.bc,.blog-featured').forEach(card=>{
+  card.addEventListener('mousemove',e=>{const r=card.getBoundingClientRect();card.style.background=`radial-gradient(circle 300px at ${e.clientX-r.left}px ${e.clientY-r.top}px,rgba(201,168,76,.05),rgba(10,22,40,.85) 70%)`;});
+  card.addEventListener('mouseleave',()=>{card.style.background='';});
+});
+</script>
+<script src="js/nav.js"></script>
+</body></html>

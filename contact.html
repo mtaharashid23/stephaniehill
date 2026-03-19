@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Contact — Stephanie Hill</title>
+<link rel="stylesheet" href="css/style.css"/>
+<style>
+.page-hero{background:radial-gradient(ellipse 80% 70% at 60% 70%,#1a0e28 0%,transparent 60%),var(--deep);}
+.contact-section{padding:110px 70px;background:var(--deep);}
+.contact-grid{max-width:1300px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:90px;align-items:start;}
+.ci .s-body{max-width:500px;}
+.contact-cards{margin-top:40px;display:flex;flex-direction:column;gap:14px;}
+.cc{display:flex;align-items:center;gap:20px;padding:20px 24px;border:1px solid rgba(201,168,76,.1);background:rgba(10,22,40,.4);text-decoration:none;transition:border-color .35s,background .35s;}
+.cc:hover{border-color:rgba(201,168,76,.32);background:rgba(201,168,76,.04);}
+.cc-icon{width:44px;height:44px;flex-shrink:0;border:1px solid rgba(201,168,76,.22);display:flex;align-items:center;justify-content:center;font-size:1rem;color:var(--gold);}
+.cc-lbl{font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--text2);margin-bottom:4px;}
+.cc-val{font-size:.85rem;color:var(--white);}
+
+/* form */
+.fg{margin-bottom:22px;}
+.fg label{display:block;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:9px;}
+.fg input,.fg textarea,.fg select{width:100%;background:rgba(255,255,255,.03);border:none;border-bottom:1px solid rgba(201,168,76,.25);color:var(--white);font-family:var(--font-body);font-size:.86rem;padding:13px;outline:none;transition:border-color .3s,background .3s;-webkit-appearance:none;border-radius:0;}
+.fg input:focus,.fg textarea:focus,.fg select:focus{border-bottom-color:rgba(201,168,76,.65);background:rgba(201,168,76,.03);}
+.fg textarea{height:130px;resize:none;}
+.fg select option{background:var(--navy);}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+.fsub{width:100%;margin-top:10px;padding:16px;background:linear-gradient(135deg,var(--gold),var(--gold2));border:none;color:var(--deep);font-family:var(--font-body);font-size:.7rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;cursor:pointer;transition:transform .3s,box-shadow .3s;}
+.fsub:hover{transform:translateY(-2px);box-shadow:0 14px 42px rgba(201,168,76,.28);}
+.form-ok{display:none;text-align:center;padding:32px;border:1px solid rgba(201,168,76,.25);background:rgba(201,168,76,.04);}
+.form-ok h3{font-family:var(--font-display);font-size:1.6rem;color:var(--gold);margin-bottom:10px;}
+.form-ok p{font-size:.82rem;color:var(--text);}
+
+@media(max-width:1024px){.contact-grid{grid-template-columns:1fr;gap:60px;}.contact-section{padding-left:40px;padding-right:40px;}}
+@media(max-width:768px){.contact-section{padding-left:22px;padding-right:22px;padding-top:80px;padding-bottom:80px;}.frow{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<div class="cursor-dot"></div><div class="cursor-ring"></div><div class="page-transition"></div>
+<nav id="navbar">
+  <a href="index.html" class="nav-logo">Stephanie <span>Hill</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li><li><a href="book.html">About the Book</a></li>
+    <li><a href="author.html">About the Author</a></li><li><a href="blog.html">Blogs &amp; Articles</a></li>
+    <li><a href="contact.html" class="active">Contact Us</a></li>
+  </ul>
+  <div class="hamburger" id="ham"><span></span><span></span><span></span></div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Home</a><div class="mobile-divider"></div><a href="book.html">About the Book</a>
+  <div class="mobile-divider"></div><a href="author.html">About the Author</a><div class="mobile-divider"></div>
+  <a href="blog.html">Blogs &amp; Articles</a><div class="mobile-divider"></div><a href="contact.html">Contact Us</a>
+</div>
+
+<div class="page-hero">
+  <div class="ph-bg-text">CONNECT</div>
+  <div class="ph-inner">
+    <div class="s-label">Reach Out</div>
+    <h1>Contact <em>Stephanie</em></h1>
+  </div>
+</div>
+
+<div class="contact-section">
+  <div class="contact-grid container">
+    <div class="ci">
+      <div class="s-label" data-reveal>Get In Touch</div>
+      <h2 class="s-heading" data-reveal>Let's <em>Connect</em></h2>
+      <div class="s-divider" data-reveal></div>
+      <p class="s-body" data-reveal>Whether you are a reader who has been moved by the book, a fellow survivor seeking connection, a media outlet requesting an interview, or an organization looking for a speaker — Stephanie would love to hear from you.</p>
+      <p class="s-body" data-reveal>Every story of survival deserves to be heard. Every voice matters.</p>
+      <!-- <div class="contact-cards" data-stagger>
+        <a href="https://stephaniehillauthor.com" target="_blank" class="cc">
+          <div class="cc-icon">🌐</div>
+          <div><div class="cc-lbl">Website</div><div class="cc-val">stephaniehillauthor.com</div></div>
+        </a>
+        <div class="cc">
+          <div class="cc-icon">📖</div>
+          <div><div class="cc-lbl">For</div><div class="cc-val">Speaking · Media · Book Orders · General</div></div>
+        </div>
+      </div> -->
+    </div>
+
+    <div data-reveal="right">
+      <form id="cform">
+        <div class="frow">
+          <div class="fg"><label>First Name</label><input type="text" placeholder="Jane" required/></div>
+          <div class="fg"><label>Last Name</label><input type="text" placeholder="Doe"/></div>
+        </div>
+        <div class="fg"><label>Email Address</label><input type="email" placeholder="your@email.com" required/></div>
+        <div class="fg">
+          <label>Reason for Contact</label>
+          <select>
+            <option>General Inquiry</option><option>Book Order</option>
+            <option>Speaking Engagement</option><option>Media / Press Interview</option>
+            <option>Share My Story</option><option>Other</option>
+          </select>
+        </div>
+        <div class="fg"><label>Your Message</label><textarea placeholder="Tell Stephanie what's on your mind..."></textarea></div>
+        <button type="submit" class="fsub">Send Message</button>
+      </form>
+      <div class="form-ok" id="formOk">
+        <h3>Message Sent ✦</h3>
+        <p>Thank you for reaching out. Stephanie will be in touch with you soon.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer><div class="footer-inner">
+  <a href="index.html" class="footer-logo">Stephanie <span>Hill</span></a>
+  <ul class="footer-nav"><li><a href="index.html">Home</a></li><li><a href="book.html">Book</a></li><li><a href="author.html">Author</a></li><li><a href="blog.html">Blog</a></li><li><a href="contact.html">Contact</a></li></ul>
+  <p class="footer-copy">© 2026 Stephanie Hill. All rights reserved.</p>
+</div></footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+<script>gsap.registerPlugin(ScrollTrigger);</script>
+<script>
+gsap.from('.ph-inner h1',{y:60,opacity:0,duration:1,ease:'power3.out',delay:.4});
+gsap.from('.ph-inner .s-label',{y:30,opacity:0,duration:.8,ease:'power3.out',delay:.2});
+document.getElementById('cform').addEventListener('submit',e=>{
+  e.preventDefault();
+  const btn=e.target.querySelector('.fsub');
+  gsap.to(btn,{scaleX:.97,duration:.1,yoyo:true,repeat:1});
+  setTimeout(()=>{
+    e.target.style.display='none';
+    const ok=document.getElementById('formOk');
+    ok.style.display='block';
+    gsap.from(ok,{y:20,opacity:0,duration:.6,ease:'power2.out'});
+  },500);
+});
+</script>
+<script src="js/nav.js"></script>
+</body></html>
