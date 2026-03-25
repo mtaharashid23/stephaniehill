@@ -68,6 +68,55 @@
 
 @media(max-width:1024px){.hero-inner{grid-template-columns:1fr;padding:0 40px;}.hero-text{padding-top:140px;}.hero-book-side{display:none;}.scroll-ind{left:40px;}.mvv-grid{grid-template-columns:1fr;}.intro-inner{grid-template-columns:1fr;gap:50px;}.mvv-section,.intro-band,.cta-band{padding-left:40px;padding-right:40px;}}
 @media(max-width:768px){.hero-inner{padding:0 22px;}.scroll-ind{left:22px;}.mvv-section,.intro-band,.cta-band{padding-left:22px;padding-right:22px;padding-top:80px;padding-bottom:80px;}}
+
+/* ── NEW SECTIONS ── */
+.opening-section{background:var(--deep);padding:100px 70px;text-align:center;border-top:1px solid rgba(201,168,76,.07);}
+.opening-inner{max-width:660px;margin:0 auto;}
+.opening-line{display:block;font-family:var(--font-display);font-size:clamp(1.4rem,2.8vw,1.9rem);font-weight:300;font-style:italic;color:var(--white);line-height:1.75;margin-bottom:18px;opacity:.9;}
+.opening-line em{color:var(--gold);}
+.opening-rule{width:1px;height:56px;background:linear-gradient(to bottom,var(--gold),transparent);margin:34px auto 0;}
+
+.oaktree-section{position:relative;min-height:500px;display:flex;align-items:center;justify-content:center;overflow:hidden;text-align:center;}
+.oaktree-bg{position:absolute;inset:0;background:linear-gradient(160deg,var(--navy) 0%,var(--deep) 60%,#061008 100%);z-index:0;}
+.oaktree-overlay{position:absolute;inset:0;background:rgba(0,0,0,.35);z-index:1;}
+.oaktree-content{position:relative;z-index:2;padding:0 40px;}
+.oaktree-content p{font-family:var(--font-display);font-size:clamp(1.3rem,2.5vw,1.9rem);font-weight:300;font-style:italic;color:var(--white);line-height:1.7;max-width:580px;margin:0 auto 12px;}
+.oaktree-content p em{color:var(--gold);}
+.oaktree-content span{display:block;font-size:.58rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(201,168,76,.55);margin-top:20px;}
+
+.author-home-section{background:linear-gradient(160deg,var(--navy) 0%,var(--deep) 100%);padding:110px 70px;}
+.author-home-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
+.author-home-photo{position:relative;}
+.author-home-photo img{width:100%;max-width:440px;display:block;filter:grayscale(15%) contrast(1.04);}
+.author-home-photo::after{content:'';position:absolute;bottom:-14px;left:-14px;right:14px;top:14px;border:1px solid rgba(201,168,76,.15);z-index:-1;pointer-events:none;}
+.author-home-text h2{font-family:var(--font-display);font-size:clamp(2rem,3.5vw,3rem);font-weight:300;color:var(--white);margin-bottom:24px;line-height:1.1;}
+.author-home-text h2 em{font-style:italic;color:var(--gold);}
+.author-bio-line{font-family:var(--font-display);font-size:1rem;font-weight:300;font-style:italic;color:var(--text);line-height:1.8;margin-bottom:14px;}
+
+.final-section{background:linear-gradient(135deg,var(--purple) 0%,#0e1a30 100%);padding:120px 70px;text-align:center;position:relative;overflow:hidden;}
+.final-section::before{content:'HEALING TEARS';font-family:var(--font-display);font-size:clamp(5rem,12vw,15rem);font-weight:300;color:rgba(201,168,76,.04);position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);white-space:nowrap;pointer-events:none;}
+.final-section p{font-family:var(--font-display);font-size:clamp(1.3rem,2.5vw,1.9rem);font-weight:300;font-style:italic;color:var(--white);max-width:540px;margin:0 auto 42px;line-height:1.65;position:relative;}
+.final-section p em{color:var(--gold);}
+
+/* mobile hero book show */
+@media(max-width:768px){
+  .hero-book-side{display:flex!important;justify-content:center;padding-top:0;padding-bottom:32px;}
+  .book-wrap{opacity:1!important;transform:none!important;animation:none!important;}
+  .book-wrap img{max-width:170px;margin:0 auto;}
+  .hero-text{padding-top:100px;padding-bottom:0;}
+  .opening-section{padding:72px 22px;}
+  .oaktree-section{min-height:340px;}
+  .author-home-section{padding:72px 22px;}
+  .author-home-inner{grid-template-columns:1fr;gap:44px;}
+  .author-home-photo::after{display:none;}
+  .final-section{padding:80px 22px;}
+}
+@media(max-width:1024px){
+  .author-home-inner{grid-template-columns:1fr;gap:50px;}
+  .author-home-section{padding-left:40px;padding-right:40px;}
+  .opening-section{padding-left:40px;padding-right:40px;}
+  .final-section{padding-left:40px;padding-right:40px;}
+}
 </style>
 </head>
 <body>
@@ -182,6 +231,50 @@
   </div>
 </div>
 
+<!-- OPENING TEXT -->
+<section class="opening-section">
+  <div class="opening-inner" data-reveal>
+    <span class="opening-line">Some stories don't have a neat ending.</span>
+    <span class="opening-line">Some journeys break you open before they make you whole.</span>
+    <span class="opening-line"><em>This is one of those stories.</em></span>
+    <div class="opening-rule"></div>
+  </div>
+</section>
+
+<!-- OAK TREE SECTION -->
+<section class="oaktree-section">
+  <div class="oaktree-bg"></div>
+  <div class="oaktree-overlay"></div>
+  <div class="oaktree-content" data-reveal>
+    <p>Even the oldest oak<br>began as something <em>small and uncertain.</em></p>
+    <span>— roots before branches —</span>
+  </div>
+</section>
+
+<!-- AUTHOR SECTION -->
+<section class="author-home-section">
+  <div class="author-home-inner">
+    <div class="author-home-photo" data-reveal="left">
+      <img src="images/author-img.jpeg" alt="Stephanie Hill"/>
+    </div>
+    <div class="author-home-text" data-reveal="right">
+      <div class="s-label">About the Author</div>
+      <h2>Stephanie <em>Hill</em></h2>
+      <p class="author-bio-line">She didn't set out to write a book. She set out to survive.</p>
+      <p class="author-bio-line">Stephanie Hill is a cancer survivor, a grieving sister, and a woman who chose to turn her most painful years into something that might help someone else feel less alone.</p>
+      <p class="author-bio-line">She lives and writes with the belief that honesty — even when it hurts — is where healing begins.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL SECTION -->
+<section class="final-section">
+  <div data-reveal>
+    <p>If you have ever felt like you were losing yourself — <em>this book was written for you.</em></p>
+    <a href="book.html" class="btn-gold">Read the Story</a>
+  </div>
+</section>
+
 <footer>
   <div class="footer-inner">
     <a href="index.html" class="footer-logo">Stephanie <span>Hill</span></a>
@@ -189,6 +282,18 @@
       <li><a href="index.html">Home</a></li><li><a href="book.html">Book</a></li>
       <li><a href="author.html">Author</a></li><li><a href="blog.html">Blog</a></li><li><a href="contact.html">Contact</a></li>
     </ul>
+    <a href="mailto:stephanie@stephaniehill.com" class="footer-email">stephanie@stephaniehill.com</a>
+    <div class="footer-socials">
+      <a href="#" aria-label="Instagram" title="Instagram">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.334 3.608 1.31.975.975 1.247 2.242 1.31 3.608.058 1.265.069 1.645.069 4.849s-.011 3.584-.069 4.849c-.063 1.366-.335 2.633-1.31 3.608-.975.976-2.242 1.248-3.608 1.31-1.266.058-1.646.07-4.85.07s-3.584-.012-4.849-.07c-1.366-.062-2.633-.334-3.608-1.31-.976-.975-1.248-2.242-1.31-3.608C2.175 15.584 2.163 15.204 2.163 12s.012-3.584.07-4.849c.062-1.366.334-2.633 1.31-3.608.975-.976 2.242-1.248 3.608-1.31C8.416 2.175 8.796 2.163 12 2.163zm0-2.163C8.741 0 8.332.014 7.052.072 5.197.157 3.355.673 2.014 2.014.673 3.355.157 5.197.072 7.052.014 8.332 0 8.741 0 12c0 3.259.014 3.668.072 4.948.085 1.855.601 3.697 1.942 5.038 1.341 1.341 3.183 1.857 5.038 1.942C8.332 23.986 8.741 24 12 24s3.668-.014 4.948-.072c1.855-.085 3.697-.601 5.038-1.942 1.341-1.341 1.857-3.183 1.942-5.038.058-1.28.072-1.689.072-4.948s-.014-3.668-.072-4.948c-.085-1.855-.601-3.697-1.942-5.038C20.645.673 18.803.157 16.948.072 15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zm0 10.162a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+      </a>
+      <a href="#" aria-label="Facebook" title="Facebook">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.97h-1.513c-1.491 0-1.956.93-1.956 1.874v2.25h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg>
+      </a>
+      <a href="#" aria-label="X / Twitter" title="X / Twitter">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.737-8.835L1.254 2.25H8.08l4.253 5.622 5.911-5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+      </a>
+    </div>
     <p class="footer-copy">© 2026 Stephanie Hill. All rights reserved.</p>
   </div>
 </footer>

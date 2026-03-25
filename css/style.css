@@ -79,6 +79,12 @@ footer{background:var(--deep);border-top:1px solid rgba(201,168,76,.1);padding:5
 .footer-nav a{font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--text2);text-decoration:none;transition:color .3s;}
 .footer-nav a:hover{color:var(--gold);}
 .footer-copy{font-size:.62rem;color:var(--text2);}
+.footer-email{font-size:.62rem;letter-spacing:.12em;color:var(--text2);text-decoration:none;transition:color .3s;}
+.footer-email:hover{color:var(--gold);}
+.footer-socials{display:flex;align-items:center;gap:18px;}
+.footer-socials a{display:flex;align-items:center;justify-content:center;width:32px;height:32px;border:1px solid rgba(201,168,76,.2);color:var(--text2);text-decoration:none;transition:border-color .3s,color .3s;}
+.footer-socials a:hover{border-color:var(--gold);color:var(--gold);}
+.footer-socials svg{width:14px;height:14px;fill:currentColor;}
 
 /* NOISE */
 body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='.035'/%3E%3C/svg%3E");pointer-events:none;z-index:998;opacity:.45;}
