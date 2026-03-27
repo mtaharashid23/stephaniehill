@@ -2,16 +2,52 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>About the Author — Stephanie Hill</title>
+<title>Meet Stephanie Hill — Healing Tears</title>
 <link rel="stylesheet" href="css/style.css"/>
 <style>
-.page-hero{background:radial-gradient(ellipse 70% 70% at 30% 70%,#1a0e2a 0%,transparent 55%),radial-gradient(ellipse 60% 55% at 70% 35%,#0e1a34 0%,transparent 55%),var(--deep);}
+/* Hero with oak tree SVG background */
+.page-hero{
+  background:
+    radial-gradient(ellipse 70% 70% at 30% 70%,#1a0e2a 0%,transparent 55%),
+    radial-gradient(ellipse 60% 55% at 70% 35%,#0e1a34 0%,transparent 55%),
+    var(--deep);
+  position:relative;
+  overflow:hidden;
+}
+/* Oak tree — medium gray, visible through dark vignette */
+.oak-tree-bg{
+  position:absolute;
+  inset:0;
+  opacity:1;
+  pointer-events:none;
+  z-index:0;
+  display:flex;
+  align-items:flex-end;
+  justify-content:flex-end;
+  padding-right:80px;
+}
+.oak-tree-bg svg{
+  width:520px;
+  height:520px;
+  opacity:0.18;
+  filter:drop-shadow(0 0 30px rgba(120,130,150,0.3));
+}
+/* dark vignette overlay over oak tree */
+.oak-vignette{
+  position:absolute;
+  inset:0;
+  background:radial-gradient(ellipse 90% 90% at 50% 50%, transparent 20%, rgba(5,13,24,0.65) 100%);
+  pointer-events:none;
+  z-index:1;
+}
+.page-hero .ph-inner{z-index:2;}
+.page-hero .ph-bg-text{z-index:0;}
 
 /* author intro grid */
 .author-section{padding:110px 70px;background:var(--deep);}
 .author-grid{max-width:1300px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:90px;align-items:start;}
 
-/* ── BEFORE/AFTER ── */
+/* Before/After */
 .ba-wrap{position:relative;overflow:hidden;user-select:none;cursor:ew-resize;}
 .ba-wrap img{display:block;width:100%;}
 .ba-after{position:absolute;inset:0;overflow:hidden;}
@@ -23,9 +59,7 @@
 .ba-label-before{left:16px;}
 .ba-label-after{right:16px;}
 
-/* author text */
 .author-frame{position:relative;}
-.author-frame .ba-wrap{border:none;}
 .author-border{position:absolute;top:20px;left:20px;right:-20px;bottom:-20px;border:1px solid rgba(201,168,76,.2);pointer-events:none;z-index:-1;}
 .author-caption{margin-top:16px;text-align:center;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--text2);}
 
@@ -35,32 +69,104 @@
 .tag{padding:7px 16px;border:1px solid rgba(201,168,76,.2);font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);transition:background .3s;}
 .tag:hover{background:rgba(201,168,76,.07);}
 
-@media(max-width:1024px){.author-grid{grid-template-columns:1fr;gap:60px;}.author-section{padding-left:40px;padding-right:40px;}}
-@media(max-width:768px){.author-section{padding-left:22px;padding-right:22px;padding-top:80px;padding-bottom:80px;}.author-border{display:none;}}
+/* VIDEO SECTION */
+.video-section{padding:80px 70px;background:var(--navy);}
+.video-inner{max-width:900px;margin:0 auto;}
+.video-wrapper{position:relative;width:100%;padding-top:56.25%;background:#000;border:1px solid rgba(201,168,76,.15);overflow:hidden;}
+.video-wrapper iframe,.video-wrapper video{position:absolute;top:0;left:0;width:100%;height:100%;border:none;}
+.video-placeholder{position:absolute;top:0;left:0;width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;background:radial-gradient(ellipse at 50% 50%,#0e1a34 0%,var(--deep) 100%);}
+.video-play-icon{width:72px;height:72px;border:2px solid var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:20px;transition:background .3s;}
+.video-play-icon:hover{background:rgba(201,168,76,.1);}
+.video-play-icon::after{content:'';border-left:22px solid var(--gold);border-top:13px solid transparent;border-bottom:13px solid transparent;margin-left:6px;}
+.video-caption{font-size:.65rem;letter-spacing:.25em;text-transform:uppercase;color:var(--text2);}
+
+@media(max-width:1024px){.author-grid{grid-template-columns:1fr;gap:60px;}.author-section{padding-left:40px;padding-right:40px;}.video-section{padding-left:40px;padding-right:40px;}}
+@media(max-width:768px){.author-section{padding-left:22px;padding-right:22px;padding-top:80px;padding-bottom:80px;}.author-border{display:none;}.video-section{padding-left:22px;padding-right:22px;}.oak-tree-bg{padding-right:20px;}.oak-tree-bg svg{width:280px;height:280px;}}
 </style>
 </head>
 <body>
 <div class="cursor-dot"></div><div class="cursor-ring"></div><div class="page-transition"></div>
+
+<!-- BUY YOUR BOOK NOW bar -->
+<div class="buy-book-bar"><a href="contact.html">BUY YOUR BOOK NOW</a></div>
+
 <nav id="navbar">
   <a href="index.html" class="nav-logo">Stephanie <span>Hill</span></a>
   <ul class="nav-links">
-    <li><a href="index.html">Home</a></li><li><a href="book.html">About the Book</a></li>
-    <li><a href="author.html" class="active">About the Author</a></li><li><a href="blog.html">Blogs &amp; Articles</a></li>
-    <li><a href="contact.html">Contact Us</a></li>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="book.html">About the Book</a></li>
+    <li><a href="author.html" class="active">Meet Stephanie Hill</a></li>
+    <li><a href="blog.html">Blogs &amp; Articles</a></li>
+    <li><a href="contact.html">Book Order Information</a></li>
+    <li><a href="speaking.html">Speaking Engagements</a></li>
+    <li><a href="future-books.html">Future Books</a></li>
   </ul>
   <div class="hamburger" id="ham"><span></span><span></span><span></span></div>
 </nav>
 <div class="mobile-menu" id="mobileMenu">
-  <a href="index.html">Home</a><div class="mobile-divider"></div><a href="book.html">About the Book</a>
-  <div class="mobile-divider"></div><a href="author.html">About the Author</a><div class="mobile-divider"></div>
-  <a href="blog.html">Blogs &amp; Articles</a><div class="mobile-divider"></div><a href="contact.html">Contact Us</a>
+  <a href="index.html">Home</a><div class="mobile-divider"></div>
+  <a href="book.html">About the Book</a><div class="mobile-divider"></div>
+  <a href="author.html">Meet Stephanie Hill</a><div class="mobile-divider"></div>
+  <a href="blog.html">Blogs &amp; Articles</a><div class="mobile-divider"></div>
+  <a href="contact.html">Book Order Information</a><div class="mobile-divider"></div>
+  <a href="speaking.html">Speaking Engagements</a><div class="mobile-divider"></div>
+  <a href="future-books.html">Future Books</a>
 </div>
 
 <div class="page-hero">
+  <!-- Oak tree SVG background -->
+  <div class="oak-tree-bg">
+    <svg viewBox="0 0 400 480" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Trunk -->
+      <path d="M195 480 L195 260 Q190 240 185 220 Q180 200 182 180 Q185 160 190 140" stroke="#9aa5b4" stroke-width="14" stroke-linecap="round" fill="none"/>
+      <path d="M205 480 L205 260 Q210 240 215 220 Q220 200 218 180 Q215 160 210 140" stroke="#9aa5b4" stroke-width="10" stroke-linecap="round" fill="none"/>
+      <!-- Main left branch -->
+      <path d="M190 220 Q160 200 130 180 Q100 160 80 130 Q65 110 50 80" stroke="#9aa5b4" stroke-width="7" stroke-linecap="round" fill="none"/>
+      <!-- Main right branch -->
+      <path d="M210 200 Q240 180 270 155 Q300 130 320 100 Q335 78 350 55" stroke="#9aa5b4" stroke-width="7" stroke-linecap="round" fill="none"/>
+      <!-- Upper center branch -->
+      <path d="M195 160 Q190 130 185 100 Q180 75 178 50 Q176 30 180 10" stroke="#9aa5b4" stroke-width="6" stroke-linecap="round" fill="none"/>
+      <!-- Sub-branches left -->
+      <path d="M130 180 Q115 165 100 145 Q88 128 75 110" stroke="#9aa5b4" stroke-width="4" stroke-linecap="round" fill="none"/>
+      <path d="M110 155 Q95 148 80 138 Q65 126 55 110" stroke="#9aa5b4" stroke-width="3" stroke-linecap="round" fill="none"/>
+      <path d="M80 130 Q65 120 55 105 Q45 90 40 72" stroke="#9aa5b4" stroke-width="3" stroke-linecap="round" fill="none"/>
+      <!-- Sub-branches right -->
+      <path d="M270 155 Q285 138 295 118 Q305 100 310 80" stroke="#9aa5b4" stroke-width="4" stroke-linecap="round" fill="none"/>
+      <path d="M295 120 Q310 108 322 92 Q332 78 338 60" stroke="#9aa5b4" stroke-width="3" stroke-linecap="round" fill="none"/>
+      <path d="M320 100 Q335 85 345 68 Q353 52 358 35" stroke="#9aa5b4" stroke-width="3" stroke-linecap="round" fill="none"/>
+      <!-- Twigs -->
+      <path d="M50 80 Q40 68 32 55" stroke="#9aa5b4" stroke-width="2" stroke-linecap="round" fill="none"/>
+      <path d="M50 80 Q44 65 38 52" stroke="#9aa5b4" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+      <path d="M180 10 Q172 2 164 -5" stroke="#9aa5b4" stroke-width="2" stroke-linecap="round" fill="none"/>
+      <path d="M180 10 Q188 2 192 -6" stroke="#9aa5b4" stroke-width="2" stroke-linecap="round" fill="none"/>
+      <path d="M350 55 Q358 42 364 30" stroke="#9aa5b4" stroke-width="2" stroke-linecap="round" fill="none"/>
+      <path d="M350 55 Q342 44 336 32" stroke="#9aa5b4" stroke-width="2" stroke-linecap="round" fill="none"/>
+      <!-- Extra small branches for fullness -->
+      <path d="M160 140 Q148 128 138 112 Q128 97 122 80" stroke="#9aa5b4" stroke-width="3" stroke-linecap="round" fill="none"/>
+      <path d="M220 140 Q232 125 242 108 Q250 93 255 76" stroke="#9aa5b4" stroke-width="3" stroke-linecap="round" fill="none"/>
+      <path d="M185 100 Q175 88 166 74 Q158 62 154 48" stroke="#9aa5b4" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+      <path d="M192 90 Q202 76 210 62 Q216 50 218 36" stroke="#9aa5b4" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+    </svg>
+  </div>
+  <div class="oak-vignette"></div>
   <div class="ph-bg-text">STEPHANIE</div>
   <div class="ph-inner">
     <div class="s-label">The Author</div>
     <h1>Meet <em>Stephanie Hill</em></h1>
+  </div>
+</div>
+
+<!-- VIDEO SECTION -->
+<div class="video-section">
+  <div class="video-inner">
+    <div class="s-label" data-reveal style="justify-content:center;margin-bottom:28px;">Watch &amp; Listen</div>
+    <div class="video-wrapper">
+      <!-- Replace src with actual video URL when available -->
+      <div class="video-placeholder">
+        <div class="video-play-icon"></div>
+        <div class="video-caption">Video coming soon</div>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -70,17 +176,14 @@
     <!-- Before / After image -->
     <div class="author-frame" data-reveal="left">
       <div class="ba-wrap" id="baWrap">
-        <!-- BEFORE image (background) -->
         <img src="https://stephology.co/wp-content/uploads/2026/02/8_73aaf54b-204c-4ad1-84ae-df9a7151c8f1.jpg"
              alt="Stephanie — Before"
-             onerror="this.src='https://stephology.co/wp-content/uploads/elementor/thumbs/JFDD_636d7a2f-e33c-4028-98f9-f836fbd20298-scaled-rizhzq4woztrdmtsxq181jz17i6y4kq4vmgjltydvu.jpg'"/>
-        <!-- AFTER image (foreground, revealed by slider) -->
+             onerror="this.src='images/author-img.jpeg'"/>
         <div class="ba-after" id="baAfter" style="width:50%;">
           <img src="https://stephology.co/wp-content/uploads/2026/02/9_f886c870-ff32-4b27-9fce-f33822076eb1.jpg"
                alt="Stephanie — After"
-               onerror="this.src='https://stephology.co/wp-content/uploads/2026/02/8_73aaf54b-204c-4ad1-84ae-df9a7151c8f1.jpg'"/>
+               onerror="this.src='images/author-img.jpeg'"/>
         </div>
-        <!-- Slider handle -->
         <div class="ba-slider" id="baSlider" style="left:50%;">
           <div class="ba-handle">
             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -98,18 +201,18 @@
     <!-- Text -->
     <div class="author-text-col">
       <div class="s-label" data-reveal>About Stephanie</div>
-      <h2 class="s-heading" data-reveal>Thyroid Cancer Survivor.<br><em>Storyteller. Advocate.</em></h2>
+      <h2 class="s-heading" data-reveal>Stage IV Cancer Survivor.<br><em>Writer. Advocate. Speaker.</em></h2>
       <div class="s-divider" data-reveal></div>
       <blockquote class="author-quote" data-reveal>"Even in the darkest moments, healing and meaning are still possible."</blockquote>
-      <p class="s-body" data-reveal>Stephanie is a thyroid cancer survivor, writer, and advocate for women navigating the intersection of illness, grief, and recovery. Her journey, captured in Healing Tears, began with years of overlooked symptoms and medical dismissal, culminating in a life-threatening thyroid storm, a Stage IV cancer diagnosis, and an eight-hour surgery that changed everything.</p>
-      <p class="s-body" data-reveal>On the same day she fought for her life, Stephanie lost her twin brother her closest bond and lifelong source of strength. That loss reshaped her healing, turning survival into something deeper than physical recovery. It became a journey of rebuilding identity, trust, and purpose in the aftermath of profound trauma.</p>
-      <p class="s-body" data-reveal>Through her writing, Stephanie offers an unfiltered look at what it truly means to survive not just the treatments and procedures, but the silent battles that follow. She speaks to the loneliness, the emotional weight, and the resilience required to keep going when life no longer feels familiar.</p>
-      <p class="s-body" data-reveal>Today, she uses her voice to help others feel seen, understood, and less alone. Her work is rooted in honesty, compassion, and the belief that even in the darkest moments, healing and meaning are still possible.</p>
+      <p class="s-body" data-reveal>I am a survivor of stage IV thyroid cancer. I am also a writer and an advocate for people navigating the intersection of illness, grief, and recovery. My journey, captured in Healing Tears, began with years of overlooked symptoms and medical dismissal, culminating in a life-threatening thyroid storm. A Stage IV cancer diagnosis, and an eight-hour surgery that changed everything.</p>
+      <p class="s-body" data-reveal>On the same day she fought for my life, I lost my twin brother, my closest familial bond, and lifelong source of strength. This loss, while devastating and unimaginable, reshaped my healing, turning survival into something deeper than physical recovery. It became a journey of rebuilding my identity, trust, and purpose in the aftermath of profound trauma.</p>
+      <p class="s-body" data-reveal>My writing offers an unfiltered perspective and a look into what it truly means to survive — not just the treatments and procedures, but the silent battles that follow, some ongoing. I reflect candidly about the loneliness, the emotional weight, and the resilience required to keep going when life no longer feels familiar.</p>
+      <p class="s-body" data-reveal>Today, I use my voice and talents in Public Speaking to help others feel seen, heard, understood, and less alone. My writing and related work are deeply rooted in honesty, compassion, and the belief that even in the darkest moments, healing and meaning are still possible.</p>
       <div class="tags" data-reveal>
-        <span class="tag">Thyroid Cancer Survivor</span>
+        <span class="tag">Stage IV Cancer Survivor</span>
         <span class="tag">Writer</span>
         <span class="tag">Advocate</span>
-        <span class="tag">Speaker</span>
+        <span class="tag">Public Speaker</span>
       </div>
       <div style="margin-top:34px;" data-reveal>
         <a href="book.html" class="btn-gold">Read Her Story</a>
@@ -120,7 +223,11 @@
 
 <footer><div class="footer-inner">
   <a href="index.html" class="footer-logo">Stephanie <span>Hill</span></a>
-  <ul class="footer-nav"><li><a href="index.html">Home</a></li><li><a href="book.html">Book</a></li><li><a href="author.html">Author</a></li><li><a href="blog.html">Blog</a></li><li><a href="contact.html">Contact</a></li></ul>
+  <ul class="footer-nav">
+    <li><a href="index.html">Home</a></li><li><a href="book.html">Book</a></li>
+    <li><a href="author.html">Author</a></li><li><a href="blog.html">Blog</a></li>
+    <li><a href="contact.html">Book Order Info</a></li><li><a href="speaking.html">Speaking</a></li>
+  </ul>
   <p class="footer-copy">© 2026 Stephanie Hill. All rights reserved.</p>
 </div></footer>
 
@@ -131,52 +238,21 @@
 <script>
 gsap.from('.ph-inner h1',{y:60,opacity:0,duration:1,ease:'power3.out',delay:.4});
 gsap.from('.ph-inner .s-label',{y:30,opacity:0,duration:.8,ease:'power3.out',delay:.2});
-
-// ── Before/After slider ──
 (function(){
-  const wrap   = document.getElementById('baWrap');
-  const after  = document.getElementById('baAfter');
-  const slider = document.getElementById('baSlider');
-  let dragging = false;
-
-  function setPos(pct){
-    pct = Math.max(5, Math.min(95, pct));
-    after.style.width  = pct + '%';
-    slider.style.left  = pct + '%';
-  }
-
-  // Animate intro: sweep from 0→50%
-  let pct = 0;
+  const wrap=document.getElementById('baWrap');
+  const after=document.getElementById('baAfter');
+  const slider=document.getElementById('baSlider');
+  let dragging=false;
+  function setPos(pct){pct=Math.max(5,Math.min(95,pct));after.style.width=pct+'%';slider.style.left=pct+'%';}
   setPos(0);
-  setTimeout(() => {
-    gsap.to({v:0},{v:50,duration:1.4,ease:'power2.inOut',
-      onUpdate(){ setPos(this.targets()[0].v); }
-    });
-  }, 800);
-
-  // Mouse
-  wrap.addEventListener('mousedown', e => { dragging = true; e.preventDefault(); });
-  window.addEventListener('mouseup',  () => { dragging = false; });
-  window.addEventListener('mousemove', e => {
-    if (!dragging) return;
-    const r = wrap.getBoundingClientRect();
-    setPos(((e.clientX - r.left) / r.width) * 100);
-  });
-
-  // Touch
-  wrap.addEventListener('touchstart', e => { dragging = true; }, {passive:true});
-  window.addEventListener('touchend',  () => { dragging = false; });
-  window.addEventListener('touchmove', e => {
-    if (!dragging) return;
-    const r = wrap.getBoundingClientRect();
-    setPos(((e.touches[0].clientX - r.left) / r.width) * 100);
-  }, {passive:true});
-
-  // Click anywhere on wrap
-  wrap.addEventListener('click', e => {
-    const r = wrap.getBoundingClientRect();
-    setPos(((e.clientX - r.left) / r.width) * 100);
-  });
+  setTimeout(()=>{gsap.to({v:0},{v:50,duration:1.4,ease:'power2.inOut',onUpdate(){setPos(this.targets()[0].v);}});},800);
+  wrap.addEventListener('mousedown',e=>{dragging=true;e.preventDefault();});
+  window.addEventListener('mouseup',()=>{dragging=false;});
+  window.addEventListener('mousemove',e=>{if(!dragging)return;const r=wrap.getBoundingClientRect();setPos(((e.clientX-r.left)/r.width)*100);});
+  wrap.addEventListener('touchstart',e=>{dragging=true;},{passive:true});
+  window.addEventListener('touchend',()=>{dragging=false;});
+  window.addEventListener('touchmove',e=>{if(!dragging)return;const r=wrap.getBoundingClientRect();setPos(((e.touches[0].clientX-r.left)/r.width)*100);},{passive:true});
+  wrap.addEventListener('click',e=>{const r=wrap.getBoundingClientRect();setPos(((e.clientX-r.left)/r.width)*100);});
 })();
 </script>
 <script src="js/nav.js"></script>

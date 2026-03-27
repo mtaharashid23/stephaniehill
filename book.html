@@ -1,143 +1,418 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>About the Book — Healing Tears</title>
-<link rel="stylesheet" href="css/style.css"/>
-<style>
-.page-hero{background:radial-gradient(ellipse 80% 70% at 50% 80%,#14244a 0%,transparent 55%),linear-gradient(180deg,var(--deep) 0%,var(--navy) 100%);}
-/* book detail */
-.book-section{padding:110px 70px;background:var(--deep);}
-.book-detail{max-width:1300px;margin:0 auto;display:grid;grid-template-columns:400px 1fr;gap:90px;align-items:start;}
-.book-cover-col{position:sticky;top:110px;}
-.book-cover-col img{width:100%;display:block;box-shadow:-14px 22px 70px rgba(0,0,0,.85),0 0 60px rgba(201,168,76,.09);}
-.book-meta{margin-top:28px;border:1px solid rgba(201,168,76,.1);}
-.meta-row{display:flex;justify-content:space-between;align-items:center;padding:12px 18px;border-bottom:1px solid rgba(201,168,76,.08);}
-.meta-row:last-child{border-bottom:none;}
-.meta-k{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--text2);}
-.meta-v{font-family:var(--font-display);font-size:.95rem;color:var(--white);}
-.book-text .s-body{max-width:580px;}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>About the Book — Healing Tears</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .page-hero {
+      background: radial-gradient(ellipse 80% 70% at 50% 80%, #14244a 0%, transparent 55%), linear-gradient(180deg, var(--deep) 0%, var(--navy) 100%);
+    }
 
-/* reviews */
-.reviews-section{padding:110px 70px;background:linear-gradient(180deg,var(--navy) 0%,var(--deep) 100%);}
-.reviews-grid{max-width:1300px;margin:56px auto 0;display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
-.rv-card{padding:38px 30px;border:1px solid rgba(201,168,76,.1);background:rgba(10,22,40,.5);position:relative;transition:border-color .4s,transform .4s;}
-.rv-card:hover{border-color:rgba(201,168,76,.3);transform:translateY(-5px);}
-.rv-qmark{font-family:var(--font-display);font-size:6.5rem;line-height:.7;color:rgba(201,168,76,.1);display:block;margin-bottom:6px;}
-.rv-stars{color:var(--gold);font-size:.82rem;margin-bottom:14px;letter-spacing:.1em;}
-.rv-text{font-size:.82rem;line-height:1.92;color:var(--text);margin-bottom:22px;}
-.rv-name{font-family:var(--font-display);font-size:.95rem;color:var(--gold);}
-.rv-role{font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:var(--text2);margin-top:3px;}
+    .book-section {
+      padding: 110px 70px;
+      background: var(--deep);
+    }
 
-/* order cta */
-.order-cta{padding:110px 70px;background:linear-gradient(135deg,var(--purple) 0%,#0e1a30 100%);text-align:center;}
-.order-cta h2{font-family:var(--font-display);font-size:clamp(2rem,4vw,3.4rem);font-weight:300;color:var(--white);margin-bottom:18px;}
-.order-cta h2 em{font-style:italic;color:var(--gold);}
-.order-cta p{font-size:.87rem;color:var(--text);max-width:500px;margin:0 auto 40px;line-height:1.95;}
+    .book-detail {
+      max-width: 1300px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 400px 1fr;
+      gap: 90px;
+      align-items: start;
+    }
 
-@media(max-width:1024px){.book-detail{grid-template-columns:1fr;}.book-cover-col{position:static;max-width:360px;}.reviews-grid{grid-template-columns:1fr;}.book-section,.reviews-section,.order-cta{padding-left:40px;padding-right:40px;}}
-@media(max-width:768px){.book-section,.reviews-section,.order-cta{padding-left:22px;padding-right:22px;padding-top:80px;padding-bottom:80px;}}
-</style>
+    .book-cover-col {
+      position: sticky;
+      top: 110px;
+    }
+
+    .book-cover-col img {
+      width: 100%;
+      display: block;
+      box-shadow: -14px 22px 70px rgba(0, 0, 0, .85), 0 0 60px rgba(201, 168, 76, .09);
+    }
+
+    .book-meta {
+      margin-top: 28px;
+      border: 1px solid rgba(201, 168, 76, .1);
+    }
+
+    .meta-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 18px;
+      border-bottom: 1px solid rgba(201, 168, 76, .08);
+    }
+
+    .meta-row:last-child {
+      border-bottom: none;
+    }
+
+    .meta-k {
+      font-size: .6rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--text2);
+    }
+
+    .meta-v {
+      font-family: var(--font-display);
+      font-size: .95rem;
+      color: var(--white);
+    }
+
+    .book-text .s-body {
+      max-width: 580px;
+    }
+
+    /* reviews */
+    .reviews-section {
+      padding: 110px 70px;
+      background: linear-gradient(180deg, var(--navy) 0%, var(--deep) 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .reviews-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 220px;
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, transparent 100%);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .reviews-section .container,
+    .reviews-section .reviews-grid {
+      position: relative;
+      z-index: 2;
+    }
+
+    .reviews-grid {
+      max-width: 1300px;
+      margin: 56px auto 0;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .rv-card {
+      padding: 38px 30px;
+      border: 1px solid rgba(201, 168, 76, .1);
+      background: rgba(10, 22, 40, .5);
+      position: relative;
+      transition: border-color .4s, transform .4s;
+    }
+
+    .rv-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(to right, var(--gold), transparent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .55s ease;
+    }
+
+    .rv-card:hover {
+      border-color: rgba(201, 168, 76, .3);
+      transform: translateY(-5px);
+    }
+
+    .rv-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .rv-qmark {
+      font-family: var(--font-display);
+      font-size: 6.5rem;
+      line-height: .7;
+      color: rgba(201, 168, 76, .1);
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .rv-stars {
+      color: var(--gold);
+      font-size: .82rem;
+      margin-bottom: 14px;
+      letter-spacing: .1em;
+    }
+
+    .rv-text {
+      font-size: .82rem;
+      line-height: 1.92;
+      color: var(--text);
+      margin-bottom: 22px;
+    }
+
+    .rv-name {
+      font-family: var(--font-display);
+      font-size: .95rem;
+      color: var(--gold);
+    }
+
+    .rv-role {
+      font-size: .58rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--text2);
+      margin-top: 3px;
+    }
+
+    /* order cta */
+    .order-cta {
+      padding: 110px 70px;
+      background: linear-gradient(135deg, var(--purple) 0%, #0e1a30 100%);
+      text-align: center;
+    }
+
+    .order-cta h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3.4rem);
+      font-weight: 300;
+      color: var(--white);
+      margin-bottom: 18px;
+    }
+
+    .order-cta h2 em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .order-cta p {
+      font-size: .87rem;
+      color: var(--text);
+      max-width: 500px;
+      margin: 0 auto 40px;
+      line-height: 1.95;
+    }
+
+    .order-cta-btns {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    @media(max-width:1024px) {
+      .book-detail {
+        grid-template-columns: 1fr;
+      }
+
+      .book-cover-col {
+        position: static;
+        max-width: 360px;
+      }
+
+      .reviews-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .book-section,
+      .reviews-section,
+      .order-cta {
+        padding-left: 40px;
+        padding-right: 40px;
+      }
+    }
+
+    @media(max-width:768px) {
+
+      .book-section,
+      .reviews-section,
+      .order-cta {
+        padding-left: 22px;
+        padding-right: 22px;
+        padding-top: 80px;
+        padding-bottom: 80px;
+      }
+    }
+  </style>
 </head>
+
 <body>
-<div class="cursor-dot"></div><div class="cursor-ring"></div><div class="page-transition"></div>
-<nav id="navbar">
-  <a href="index.html" class="nav-logo">Stephanie <span>Hill</span></a>
-  <ul class="nav-links">
-    <li><a href="index.html">Home</a></li><li><a href="book.html" class="active">About the Book</a></li>
-    <li><a href="author.html">About the Author</a></li><li><a href="blog.html">Blogs &amp; Articles</a></li>
-    <li><a href="contact.html">Contact Us</a></li>
-  </ul>
-  <div class="hamburger" id="ham"><span></span><span></span><span></span></div>
-</nav>
-<div class="mobile-menu" id="mobileMenu">
-  <a href="index.html">Home</a><div class="mobile-divider"></div><a href="book.html">About the Book</a>
-  <div class="mobile-divider"></div><a href="author.html">About the Author</a><div class="mobile-divider"></div>
-  <a href="blog.html">Blogs &amp; Articles</a><div class="mobile-divider"></div><a href="contact.html">Contact Us</a>
-</div>
+  <div class="cursor-dot"></div>
+  <div class="cursor-ring"></div>
+  <div class="page-transition"></div>
 
-<div class="page-hero">
-  <div class="ph-bg-text">BOOK</div>
-  <div class="ph-inner">
-    <div class="s-label">The Memoir</div>
-    <h1>About the <em>Book</em></h1>
+  <div class="buy-book-bar"><a href="contact.html">BUY YOUR BOOK NOW</a></div>
+
+  <nav id="navbar">
+    <a href="index.html" class="nav-logo">Stephanie <span>Hill</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="book.html" class="active">About the Book</a></li>
+      <li><a href="author.html">Meet Stephanie Hill</a></li>
+      <li><a href="blog.html">Blogs &amp; Articles</a></li>
+      <li><a href="contact.html">Book Order Information</a></li>
+      <li><a href="speaking.html">Speaking Engagements</a></li>
+      <li><a href="future-books.html">Future Books</a></li>
+    </ul>
+    <div class="hamburger" id="ham"><span></span><span></span><span></span></div>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <div class="mobile-divider"></div>
+    <a href="book.html">About the Book</a>
+    <div class="mobile-divider"></div>
+    <a href="author.html">Meet Stephanie Hill</a>
+    <div class="mobile-divider"></div>
+    <a href="blog.html">Blogs &amp; Articles</a>
+    <div class="mobile-divider"></div>
+    <a href="contact.html">Book Order Information</a>
+    <div class="mobile-divider"></div>
+    <a href="speaking.html">Speaking Engagements</a>
+    <div class="mobile-divider"></div>
+    <a href="future-books.html">Future Books</a>
   </div>
-</div>
 
-<div class="book-section">
-  <div class="book-detail">
-    <div class="book-cover-col" data-reveal="left">
-      <img src="images/book-cover.jpg" alt="Healing Tears"/>
-      <div class="book-meta">
-        <div class="meta-row"><span class="meta-k">Genre</span><span class="meta-v">Memoir</span></div>
-        <div class="meta-row"><span class="meta-k">Author</span><span class="meta-v">Stephanie Hill</span></div>
-        <div class="meta-row"><span class="meta-k">Theme</span><span class="meta-v">Survival &amp; Healing</span></div>
+  <div class="page-hero">
+    <div class="ph-bg-text">BOOK</div>
+    <div class="ph-inner">
+      <div class="s-label">The Memoir</div>
+      <h1>About the <em>Book</em></h1>
+    </div>
+  </div>
+
+  <div class="book-section">
+    <div class="book-detail">
+      <div class="book-cover-col" data-reveal="left">
+        <img src="images/book-cover.jpg" alt="Healing Tears" />
+        <div class="book-meta">
+          <div class="meta-row"><span class="meta-k">Genre</span><span class="meta-v">Memoir</span></div>
+          <div class="meta-row"><span class="meta-k">Author</span><span class="meta-v">Stephanie Hill</span></div>
+          <div class="meta-row"><span class="meta-k">Theme</span><span class="meta-v">Survival &amp; Healing</span>
+          </div>
+        </div>
+      </div>
+      <div class="book-text">
+        <div class="s-label" data-reveal>The Story</div>
+        <h2 class="s-heading" data-reveal><em>Healing Tears</em></h2>
+        <div class="s-divider" data-reveal></div>
+        <p class="s-body" data-reveal>Healing Tears is a powerful and deeply personal journey through illness, loss, and
+          the long road back to "whole," the same, yet different "whole." In this memoir, Stephanie shares her
+          experience of surviving Stage IV thyroid cancer while navigating unimaginable emotional pain, including the
+          loss of her twin brother at the most critical moment of her life.</p>
+        <p class="s-body" data-reveal>This book goes beyond medical recovery. It teaches what it truly means to endure
+          when everything is falling apart physically, emotionally, and spiritually. Through raw honesty and candid
+          reflection, Stephanie shows that healing is not about returning to who you once were, but rather, about
+          learning to live as someone new.</p>
+        <p class="s-body" data-reveal>This compelling story offers guidance, inspiration, strength, and reassurance to
+          anyone facing hardship. It reminds readers that even in the darkest moments, resilience can be rebuilt,
+          purpose can be rediscovered, and life, though changed, can still be meaningful and whole.</p>
+        <div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:34px;" data-reveal>
+          <a href="contact.html" class="btn-gold">Order Your Copy</a>
+          <a href="author.html" class="btn-outline">About the Author</a>
+        </div>
       </div>
     </div>
-    <div class="book-text">
-      <div class="s-label" data-reveal>The Story</div>
-      <h2 class="s-heading" data-reveal><em>Healing Tears</em></h2>
-      <div class="s-divider" data-reveal></div>
-      <p class="s-body" data-reveal>Healing Tears is a powerful and deeply personal journey through illness, loss, and the long road back to life. In this memoir, Stephanie shares her experience of surviving thyroid cancer while navigating unimaginable emotional pain, including the loss of her twin brother at the most critical moment of her life.</p>
-      <p class="s-body" data-reveal>This book goes beyond medical recovery. It teaches what it truly means to endure when everything falls apart physically, emotionally, and spiritually. Through raw honesty and reflection, Stephanie shows that healing is not about returning to who you once were, but about learning to live as someone new.</p>
-      <p class="s-body" data-reveal>Her story offers guidance, strength, and reassurance to anyone facing hardship. It reminds readers that even in the darkest moments, resilience can be rebuilt, purpose can be rediscovered, and life though changed can still be meaningful and whole.</p>
-      <div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:34px;" data-reveal>
+  </div>
+
+  <div class="reviews-section">
+    <div class="container">
+      <div class="s-label" data-reveal style="justify-content:center">Reader Reviews</div>
+      <h2 class="s-heading" data-reveal style="text-align:center">What Readers Are <em>Saying</em></h2>
+    </div>
+    <div class="reviews-grid">
+      <div class="rv-card" data-reveal>
+        <span class="rv-qmark">"</span>
+        <div class="rv-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="rv-text">Healing Tears felt very real and honest. It doesn't try to make everything sound hopeful all
+          the time, which I appreciated. The way Stephanie describes both the physical and emotional sides of her
+          experience made it easy to connect with her story.</p>
+        <div class="rv-name">Sarah M.</div>
+        <div class="rv-role">Reader</div>
+      </div>
+      <div class="rv-card" data-reveal>
+        <span class="rv-qmark">"</span>
+        <div class="rv-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="rv-text">As someone who has supported a loved one through illness, this book gave me a better
+          understanding of what patients go through beyond treatment. It highlights things people don't usually talk
+          about, especially the emotional aftermath.</p>
+        <div class="rv-name">James R.</div>
+        <div class="rv-role">Caregiver</div>
+      </div>
+      <div class="rv-card" data-reveal>
+        <span class="rv-qmark">"</span>
+        <div class="rv-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="rv-text">I saw parts of my own experience in this book. The recovery phase, in particular, was
+          described in a way that felt familiar. It's a quiet, reflective read that acknowledges how complicated healing
+          can be.</p>
+        <div class="rv-name">Linda K.</div>
+        <div class="rv-role">Cancer Survivor</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="order-cta">
+    <div data-reveal>
+      <h2>Ready to Begin <em>Reading?</em></h2>
+      <p>Healing Tears is available now. Order your copy and begin a journey of honesty, resilience, and transformation.
+      </p>
+      <div class="order-cta-btns">
         <a href="contact.html" class="btn-gold">Order Your Copy</a>
         <a href="author.html" class="btn-outline">About the Author</a>
       </div>
     </div>
   </div>
-</div>
 
-<div class="reviews-section">
-  <div class="container">
-    <div class="s-label" data-reveal style="justify-content:center">Reader Reviews</div>
-    <h2 class="s-heading" data-reveal style="text-align:center">What Readers Are <em>Saying</em></h2>
-  </div>
-  <div class="reviews-grid">
-    <div class="rv-card" data-reveal>
-      <span class="rv-qmark">"</span>
-      <div class="rv-stars">★★★★★</div>
-      <p class="rv-text">Healing Tears felt very real and honest. It doesn't try to make everything sound hopeful all the time, which I appreciated. The way Stephanie describes both the physical and emotional sides of her experience made it easy to connect with her story.</p>
-      <div class="rv-name">Sarah M.</div><div class="rv-role">Reader</div>
+  <footer>
+    <div class="footer-inner">
+      <a href="index.html" class="footer-logo">Stephanie <span>Hill</span></a>
+      <ul class="footer-nav">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="book.html">Book</a></li>
+        <li><a href="author.html">Author</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="contact.html">Book Order Info</a></li>
+        <li><a href="speaking.html">Speaking</a></li>
+      </ul>
+      <p class="footer-copy">© 2026 Stephanie Hill. All rights reserved.</p>
     </div>
-    <div class="rv-card" data-reveal>
-      <span class="rv-qmark">"</span>
-      <div class="rv-stars">★★★★★</div>
-      <p class="rv-text">As someone who has supported a loved one through illness, this book gave me a better understanding of what patients go through beyond treatment. It highlights things people don't usually talk about, especially the emotional aftermath.</p>
-      <div class="rv-name">James R.</div><div class="rv-role">Caregiver</div>
-    </div>
-    <div class="rv-card" data-reveal>
-      <span class="rv-qmark">"</span>
-      <div class="rv-stars">★★★★★</div>
-      <p class="rv-text">I saw parts of my own experience in this book. The recovery phase, in particular, was described in a way that felt familiar. It's a quiet, reflective read that acknowledges how complicated healing can be.</p>
-      <div class="rv-name">Linda K.</div><div class="rv-role">Cancer Survivor</div>
-    </div>
-  </div>
-</div>
+  </footer>
 
-<div class="order-cta">
-  <div data-reveal>
-    <h2>Ready to Begin <em>Reading?</em></h2>
-    <p>Healing Tears is available now. Order your copy and begin a journey of honesty, resilience, and transformation.</p>
-    <a href="contact.html" class="btn-gold">Order Your Copy</a>
-  </div>
-</div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
+  </script>
+  <script>
+    gsap.from('.ph-inner h1', {
+      y: 60,
+      opacity: 0,
+      duration: 1,
+      ease: 'power3.out',
+      delay: .4
+    });
+    gsap.from('.ph-inner .s-label', {
+      y: 30,
+      opacity: 0,
+      duration: .8,
+      ease: 'power3.out',
+      delay: .2
+    });
+    gsap.from('.ph-bg-text', {
+      y: 40,
+      opacity: 0,
+      duration: 1.2,
+      ease: 'power2.out',
+      delay: .1
+    });
+  </script>
+  <script src="js/nav.js"></script>
+</body>
 
-<footer><div class="footer-inner">
-  <a href="index.html" class="footer-logo">Stephanie <span>Hill</span></a>
-  <ul class="footer-nav"><li><a href="index.html">Home</a></li><li><a href="book.html">Book</a></li><li><a href="author.html">Author</a></li><li><a href="blog.html">Blog</a></li><li><a href="contact.html">Contact</a></li></ul>
-  <p class="footer-copy">© 2026 Stephanie Hill. All rights reserved.</p>
-</div></footer>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
-<script>gsap.registerPlugin(ScrollTrigger);</script>
-<script>
-gsap.from('.ph-inner h1',{y:60,opacity:0,duration:1,ease:'power3.out',delay:.4});
-gsap.from('.ph-inner .s-label',{y:30,opacity:0,duration:.8,ease:'power3.out',delay:.2});
-gsap.from('.ph-bg-text',{y:40,opacity:0,duration:1.2,ease:'power2.out',delay:.1});
-</script>
-<script src="js/nav.js"></script>
-</body></html>
+</html>

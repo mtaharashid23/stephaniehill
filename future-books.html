@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Future Books — Stephanie Hill</title>
+<link rel="stylesheet" href="css/style.css"/>
+<style>
+.page-hero{background:radial-gradient(ellipse 70% 70% at 40% 65%,#1a0e2a 0%,transparent 55%),radial-gradient(ellipse 55% 55% at 65% 35%,#0e1a34 0%,transparent 55%),var(--deep);}
+.future-section{padding:110px 70px;background:var(--deep);}
+.future-inner{max-width:900px;margin:0 auto;}
+@media(max-width:1024px){.future-section{padding-left:40px;padding-right:40px;}}
+@media(max-width:768px){.future-section{padding-left:22px;padding-right:22px;padding-top:80px;padding-bottom:80px;}}
+</style>
+</head>
+<body>
+<div class="cursor-dot"></div><div class="cursor-ring"></div><div class="page-transition"></div>
+
+<div class="buy-book-bar"><a href="contact.html">BUY YOUR BOOK NOW</a></div>
+
+<nav id="navbar">
+  <a href="index.html" class="nav-logo">Stephanie <span>Hill</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="book.html">About the Book</a></li>
+    <li><a href="author.html">Meet Stephanie Hill</a></li>
+    <li><a href="blog.html">Blogs &amp; Articles</a></li>
+    <li><a href="contact.html">Book Order Information</a></li>
+    <li><a href="speaking.html">Speaking Engagements</a></li>
+    <li><a href="future-books.html" class="active">Future Books</a></li>
+  </ul>
+  <div class="hamburger" id="ham"><span></span><span></span><span></span></div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Home</a><div class="mobile-divider"></div>
+  <a href="book.html">About the Book</a><div class="mobile-divider"></div>
+  <a href="author.html">Meet Stephanie Hill</a><div class="mobile-divider"></div>
+  <a href="blog.html">Blogs &amp; Articles</a><div class="mobile-divider"></div>
+  <a href="contact.html">Book Order Information</a><div class="mobile-divider"></div>
+  <a href="speaking.html">Speaking Engagements</a><div class="mobile-divider"></div>
+  <a href="future-books.html">Future Books</a>
+</div>
+
+<div class="page-hero">
+  <div class="ph-bg-text">FUTURE</div>
+  <div class="ph-inner">
+    <div class="s-label">Coming Soon</div>
+    <h1>Future <em>Books</em></h1>
+  </div>
+</div>
+
+<div class="future-section">
+  <div class="future-inner">
+    <div class="s-label" data-reveal>What's Next</div>
+    <h2 class="s-heading" data-reveal>More Stories <em>to Come</em></h2>
+    <div class="s-divider" data-reveal></div>
+    <p class="s-body" data-reveal>Stephanie's journey does not end with Healing Tears. Future works are currently in development. Stay connected for announcements about upcoming releases and projects.</p>
+    <p class="s-body" data-reveal>To stay updated, or for media and publishing inquiries, please reach out through the Book Order Information page.</p>
+    <div style="margin-top:40px;" data-reveal>
+      <a href="contact.html" class="btn-gold">Stay Connected</a>
+    </div>
+  </div>
+</div>
+
+<footer><div class="footer-inner">
+  <a href="index.html" class="footer-logo">Stephanie <span>Hill</span></a>
+  <ul class="footer-nav">
+    <li><a href="index.html">Home</a></li><li><a href="book.html">Book</a></li>
+    <li><a href="author.html">Author</a></li><li><a href="blog.html">Blog</a></li>
+    <li><a href="contact.html">Book Order Info</a></li><li><a href="speaking.html">Speaking</a></li>
+  </ul>
+  <p class="footer-copy">© 2026 Stephanie Hill. All rights reserved.</p>
+</div></footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+<script>gsap.registerPlugin(ScrollTrigger);</script>
+<script>
+gsap.from('.ph-inner h1',{y:60,opacity:0,duration:1,ease:'power3.out',delay:.4});
+gsap.from('.ph-inner .s-label',{y:30,opacity:0,duration:.8,ease:'power3.out',delay:.2});
+</script>
+<script src="js/nav.js"></script>
+</body></html>
