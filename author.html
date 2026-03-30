@@ -26,11 +26,12 @@
   justify-content:flex-end;
   padding-right:80px;
 }
-.oak-tree-bg svg{
+.oak-tree-bg img{
   width:520px;
   height:520px;
-  opacity:0.18;
+  opacity:0.30;
   filter:drop-shadow(0 0 30px rgba(120,130,150,0.3));
+  object-fit:contain;
 }
 /* dark vignette overlay over oak tree */
 .oak-vignette{
@@ -115,38 +116,8 @@
 
 <div class="page-hero">
   <!-- Oak tree SVG background -->
-  <div class="oak-tree-bg">
-    <svg viewBox="0 0 400 480" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <!-- Trunk -->
-      <path d="M195 480 L195 260 Q190 240 185 220 Q180 200 182 180 Q185 160 190 140" stroke="#9aa5b4" stroke-width="14" stroke-linecap="round" fill="none"/>
-      <path d="M205 480 L205 260 Q210 240 215 220 Q220 200 218 180 Q215 160 210 140" stroke="#9aa5b4" stroke-width="10" stroke-linecap="round" fill="none"/>
-      <!-- Main left branch -->
-      <path d="M190 220 Q160 200 130 180 Q100 160 80 130 Q65 110 50 80" stroke="#9aa5b4" stroke-width="7" stroke-linecap="round" fill="none"/>
-      <!-- Main right branch -->
-      <path d="M210 200 Q240 180 270 155 Q300 130 320 100 Q335 78 350 55" stroke="#9aa5b4" stroke-width="7" stroke-linecap="round" fill="none"/>
-      <!-- Upper center branch -->
-      <path d="M195 160 Q190 130 185 100 Q180 75 178 50 Q176 30 180 10" stroke="#9aa5b4" stroke-width="6" stroke-linecap="round" fill="none"/>
-      <!-- Sub-branches left -->
-      <path d="M130 180 Q115 165 100 145 Q88 128 75 110" stroke="#9aa5b4" stroke-width="4" stroke-linecap="round" fill="none"/>
-      <path d="M110 155 Q95 148 80 138 Q65 126 55 110" stroke="#9aa5b4" stroke-width="3" stroke-linecap="round" fill="none"/>
-      <path d="M80 130 Q65 120 55 105 Q45 90 40 72" stroke="#9aa5b4" stroke-width="3" stroke-linecap="round" fill="none"/>
-      <!-- Sub-branches right -->
-      <path d="M270 155 Q285 138 295 118 Q305 100 310 80" stroke="#9aa5b4" stroke-width="4" stroke-linecap="round" fill="none"/>
-      <path d="M295 120 Q310 108 322 92 Q332 78 338 60" stroke="#9aa5b4" stroke-width="3" stroke-linecap="round" fill="none"/>
-      <path d="M320 100 Q335 85 345 68 Q353 52 358 35" stroke="#9aa5b4" stroke-width="3" stroke-linecap="round" fill="none"/>
-      <!-- Twigs -->
-      <path d="M50 80 Q40 68 32 55" stroke="#9aa5b4" stroke-width="2" stroke-linecap="round" fill="none"/>
-      <path d="M50 80 Q44 65 38 52" stroke="#9aa5b4" stroke-width="1.5" stroke-linecap="round" fill="none"/>
-      <path d="M180 10 Q172 2 164 -5" stroke="#9aa5b4" stroke-width="2" stroke-linecap="round" fill="none"/>
-      <path d="M180 10 Q188 2 192 -6" stroke="#9aa5b4" stroke-width="2" stroke-linecap="round" fill="none"/>
-      <path d="M350 55 Q358 42 364 30" stroke="#9aa5b4" stroke-width="2" stroke-linecap="round" fill="none"/>
-      <path d="M350 55 Q342 44 336 32" stroke="#9aa5b4" stroke-width="2" stroke-linecap="round" fill="none"/>
-      <!-- Extra small branches for fullness -->
-      <path d="M160 140 Q148 128 138 112 Q128 97 122 80" stroke="#9aa5b4" stroke-width="3" stroke-linecap="round" fill="none"/>
-      <path d="M220 140 Q232 125 242 108 Q250 93 255 76" stroke="#9aa5b4" stroke-width="3" stroke-linecap="round" fill="none"/>
-      <path d="M185 100 Q175 88 166 74 Q158 62 154 48" stroke="#9aa5b4" stroke-width="2.5" stroke-linecap="round" fill="none"/>
-      <path d="M192 90 Q202 76 210 62 Q216 50 218 36" stroke="#9aa5b4" stroke-width="2.5" stroke-linecap="round" fill="none"/>
-    </svg>
+  <div class="oak-tree-bg">    
+    <img src="images/oak-tree-bg.png" alt="oak tree background">
   </div>
   <div class="oak-vignette"></div>
   <div class="ph-bg-text">STEPHANIE</div>
@@ -161,18 +132,19 @@
   <div class="video-inner">
     <div class="s-label" data-reveal style="justify-content:center;margin-bottom:28px;">Watch &amp; Listen</div>
     <div class="video-wrapper">
-      <!-- Replace src with actual video URL when available -->
-      <div class="video-placeholder">
+      <video class="author-video" controls autoplay muted loop playsinline>
+        <source src="videos/book-video.mp4" type="video/mp4">
+      </video>
+      <!-- <div class="video-placeholder">
         <div class="video-play-icon"></div>
         <div class="video-caption">Video coming soon</div>
-      </div>
+      </div> -->
     </div>
   </div>
 </div>
 
 <div class="author-section">
   <div class="author-grid container">
-
     <!-- Before / After image -->
     <div class="author-frame" data-reveal="left">
       <div class="ba-wrap" id="baWrap">
