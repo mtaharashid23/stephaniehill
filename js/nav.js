@@ -42,9 +42,17 @@ window.addEventListener('scroll', checkScroll, { passive: true });
 checkScroll();
 
 // ── Active nav link ──
-const pg = location.pathname.split('/').pop() || 'index.html';
+const currentPath = location.pathname;
+
 document.querySelectorAll('.nav-links a').forEach(a => {
-  if (a.getAttribute('href') === pg) a.classList.add('active');
+  const linkPath = new URL(a.href).pathname;
+
+  if (
+    linkPath === currentPath ||
+    (linkPath.includes('index') && (currentPath === '/' || currentPath === '/index.html'))
+  ) {
+    a.classList.add('active');
+  }
 });
 
 // ── Hamburger ──
