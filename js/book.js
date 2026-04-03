@@ -1,5 +1,6 @@
 /**
- * book.js — Book Preloader (simple fade: back → spine → front)
+ * book.js — Book Preloader (CSS 3D rotating book: back → front)
+ * Spine removed. Uses CSS 3D perspective + rotateY animation.
  */
 (function () {
   'use strict';
@@ -26,6 +27,8 @@
       pointer-events: none;
       opacity: .4;
     }
+
+    /* AMBIENT GLOW */
     #book-preloader .pl-ambient {
       position: absolute;
       width: 700px; height: 700px;
@@ -40,48 +43,72 @@
       0%,100%{ opacity:.5; transform:translate(-50%,-50%) scale(1);    }
       50%    { opacity:1;  transform:translate(-50%,-50%) scale(1.15); }
     }
+
+    /* PARTICLES */
     #book-preloader .pl-particles { position:absolute; inset:0; pointer-events:none; }
     #book-preloader .pl-particles canvas { width:100%; height:100%; }
 
-    /* BOOK WRAP — no 3D, just stack images */
+    /* 3D SCENE */
     #book-preloader .pl-scene {
       position: relative;
       z-index: 2;
+      perspective: 1000px;
     }
 
+    /* BOOK WRAPPER — floats and holds the 3D card */
+    #book-preloader .pl-book-wrap {
+      animation: plFloat 4s ease-in-out infinite;
+      filter: drop-shadow(-18px 28px 80px rgba(0,0,0,.95));
+    }
+    @keyframes plFloat {
+      0%,100%{ transform: translateY(0px);   }
+      50%    { transform: translateY(-14px); }
+    }
+
+    /* 3D BOOK CARD */
     #book-preloader .pl-book {
       position: relative;
       width:  330px;
       height: 510px;
-      animation: plFloat 4s ease-in-out infinite;
-      filter: drop-shadow(-18px 28px 80px rgba(0,0,0,.95));
+      transform-style: preserve-3d;
+      transform: rotateY(0deg);
+      transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    /* All faces stacked, fade in/out */
+    /* FRONT & BACK FACES */
     #book-preloader .pl-face {
       position: absolute;
       inset: 0;
-      opacity: 0;
-      transition: opacity 0.7s ease;
-    }
-    #book-preloader .pl-face.visible {
-      opacity: 1;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      border-radius: 3px 6px 6px 3px;
+      overflow: hidden;
     }
     #book-preloader .pl-face img {
       width: 100%; height: 100%;
       object-fit: cover;
       object-position: center;
       display: block;
-      border-radius: 3px 6px 6px 3px;
     }
 
-    #book-preloader #pl-spine img{
-      object-fit: contain;
-      object-position: center;
+    /* Back face: rotated 180deg so it shows when card flips */
+    #book-preloader .pl-back {
+      transform: rotateY(180deg);
     }
-    /* spine image is tall-thin — object-fit cover + center is correct */
 
-    /* GLOW */
+    /* Spine edge — thin strip on left side for depth */
+    #book-preloader .pl-spine-edge {
+      position: absolute;
+      top: 0; left: -14px;
+      width: 14px;
+      height: 100%;
+      background: linear-gradient(to right, #1a1208, #2e2010, #1a1208);
+      transform: rotateY(-90deg) translateX(-7px);
+      transform-origin: right center;
+      border-radius: 2px 0 0 2px;
+    }
+
+    /* BOOK GLOW */
     #book-preloader .pl-book-glow {
       position: absolute;
       bottom: -44px; left: 50%;
@@ -95,12 +122,6 @@
     @keyframes plGlow {
       0%,100%{ opacity:.4; transform:translateX(-50%) scaleX(1);    }
       50%    { opacity:.9; transform:translateX(-50%) scaleX(1.22); }
-    }
-
-    /* FLOAT */
-    @keyframes plFloat {
-      0%,100%{ transform:translateY(0px);   }
-      50%    { transform:translateY(-14px); }
     }
 
     /* LABEL */
@@ -161,18 +182,21 @@
     <div class="pl-ambient"></div>
     <div class="pl-particles"><canvas id="pl-canvas"></canvas></div>
     <div class="pl-scene">
-      <div class="pl-book" id="pl-book">
-        <div class="pl-face" id="pl-back">
-          <img src="images/book-back.jpg" alt="Back Cover" />
+      <div class="pl-book-wrap">
+        <div class="pl-book" id="pl-book">
+          <!-- Front cover (default visible, rotateY 0) -->
+          <div class="pl-face pl-front">
+            <img src="images/book-front.jpg" alt="Front Cover" />
+          </div>
+          <!-- Back cover (flipped 180deg, shows after rotation) -->
+          <div class="pl-face pl-back">
+            <img src="images/book-back.jpg" alt="Back Cover" />
+          </div>
+          <!-- Spine depth edge -->
+          <div class="pl-spine-edge"></div>
         </div>
-        <div class="pl-face" id="pl-spine">
-          <img src="images/book-spine.jpg" alt="Spine" />
-        </div>
-        <div class="pl-face" id="pl-front">
-          <img src="images/book-front.jpg" alt="Front Cover" />
-        </div>
+        <div class="pl-book-glow"></div>
       </div>
-      <div class="pl-book-glow"></div>
     </div>
     <div class="pl-label">
       <div class="pl-stage-text" id="pl-stage-text">Back Cover</div>
@@ -181,7 +205,6 @@
       </div>
       <div class="pl-dots">
         <div class="pl-dot active"></div>
-        <div class="pl-dot"></div>
         <div class="pl-dot"></div>
       </div>
     </div>
@@ -220,39 +243,43 @@
   drawParticles();
 
   /* SEQUENCE */
-  const fBack     = document.getElementById('pl-back');
-  const fSpine    = document.getElementById('pl-spine');
-  const fFront    = document.getElementById('pl-front');
+  const book      = document.getElementById('pl-book');
   const stageText = document.getElementById('pl-stage-text');
   const progress  = document.getElementById('pl-progress');
   const dots      = document.querySelectorAll('#book-preloader .pl-dot');
 
-  function showFace(face, label, pct, dotIdx){
-    /* fade out all */
-    [fBack, fSpine, fFront].forEach(f => f.classList.remove('visible'));
-    /* update label */
+  function setStage(label, pct, dotIdx, rotY) {
+    /* update text */
     stageText.style.opacity = '0';
     setTimeout(()=>{ stageText.textContent = label; stageText.style.opacity = '1'; }, 320);
-    /* fade in target */
-    setTimeout(()=> face.classList.add('visible'), 50);
+    /* rotate book */
+    book.style.transform = `rotateY(${rotY}deg)`;
+    /* progress + dots */
     progress.style.width = pct;
     dots.forEach((d,i)=> d.classList.toggle('active', i===dotIdx));
   }
 
-  /* Stage 1 — back cover immediately */
-  showFace(fBack, 'Back Cover', '33%', 0);
+  /*
+   * Stage 1 — back cover shown first
+   * Back face is rotated 180deg in CSS, so we start book at rotateY(180deg)
+   * so the back face is forward.
+   */
+  book.style.transform = 'rotateY(180deg)';
+  book.style.transition = 'none'; /* instant start — no transition */
+  /* Force reflow then re-enable transition */
+  requestAnimationFrame(()=>{
+    book.style.transition = '';
+    setStage('Back Cover', '50%', 0, 180);
+  });
 
-  /* Stage 2 — spine after 1.8s */
-  setTimeout(()=> showFace(fSpine, 'Spine', '66%', 1), 1800);
+  /* Stage 2 — flip to front after 2.4s */
+  setTimeout(()=> setStage('Front Cover', '100%', 1, 0), 2400);
 
-  /* Stage 3 — front after 3.6s */
-  setTimeout(()=> showFace(fFront, 'Front Cover', '100%', 2), 3600);
-
-  /* Exit after 5.2s */
+  /* Exit after 4.4s */
   setTimeout(()=>{
     el.classList.add('pl-exit');
     cancelAnimationFrame(raf);
     setTimeout(()=>{ el.remove(); document.body.style.overflow=''; }, 950);
-  }, 5200);
+  }, 4400);
 
 })();
