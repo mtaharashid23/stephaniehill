@@ -14,7 +14,7 @@
   var(--deep);}
 #particles-canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1;}
 .hero-inner{position:relative;z-index:3;display:grid;grid-template-columns:1fr 1fr;align-items:center;min-height:100vh;width:100%;padding:0 70px 0 55px;gap:60px;}
-.hero-text{padding-top:110px;padding-bottom:80px;}
+.hero-text{padding-top:110px;padding-bottom:80px; margin-left: 7rem;}
 .hero-rule{display:flex;align-items:center;gap:14px;margin-bottom:22px;opacity:0;}
 .hero-rule .rline{width:90px;height:1px;background:linear-gradient(to right,rgba(201,168,76,.5),transparent);}
 .hero-rule .rline.r2{background:linear-gradient(to left,rgba(201,168,76,.5),transparent);}
@@ -35,9 +35,9 @@
 @keyframes glowPulse{0%,100%{opacity:.45;transform:translateX(-50%) scaleX(1);}50%{opacity:.9;transform:translateX(-50%) scaleX(1.18);}}
 @keyframes bookFloat{0%,100%{transform:translateY(0);}50%{transform:translateY(-13px);}}
 .book-purchase-btn{opacity:0;transform:translateY(20px);}
-.btn-purchase{display:inline-flex;align-items:center;justify-content:center;padding:15px 36px;background:linear-gradient(135deg,var(--gold),var(--gold2));color:var(--deep);font-family:var(--font-body);font-size:.7rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;text-decoration:none;cursor:pointer;transition:transform .3s,box-shadow .3s;width:100%;max-width:320px;}
+.btn-purchase{display:inline-flex;align-items:center;justify-content:center;padding:15px 36px;background:linear-gradient(135deg,var(--gold),var(--gold2));color:var(--deep);font-family:var(--font-body);font-size:.7rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;text-decoration:none;cursor:pointer;transition:transform .3s,box-shadow .3s;width:fit-content;}
 .btn-purchase:hover{transform:translateY(-3px);box-shadow:0 14px 44px rgba(201,168,76,.4);}
-.scroll-ind{position:absolute;bottom:40px;left:55px;display:flex;flex-direction:column;align-items:center;gap:8px;z-index:3;opacity:0;}
+.scroll-ind{position:absolute;bottom:40px;left:10%;display:flex;flex-direction:column;align-items:center;gap:8px;z-index:3;opacity:0;}
 .scroll-ind-bar{width:1px;height:58px;background:linear-gradient(to bottom,var(--gold),transparent);animation:sBar 2.3s ease-in-out infinite;}
 .scroll-ind-txt{font-size:.55rem;letter-spacing:.28em;text-transform:uppercase;color:rgba(255,255,255,.28);writing-mode:vertical-rl;}
 @keyframes sBar{0%{transform:scaleY(0);transform-origin:top;opacity:1;}55%{transform:scaleY(1);transform-origin:top;opacity:1;}56%{transform:scaleY(1);transform-origin:bottom;}100%{transform:scaleY(0);transform-origin:bottom;opacity:0;}}
@@ -48,8 +48,8 @@
 .mvv-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(to right,var(--gold),transparent);transform:scaleX(0);transform-origin:left;transition:transform .55s ease;}
 .mvv-card:hover{background:#000;}
 .mvv-card:hover::before{transform:scaleX(1);}
-.mvv-bg-letter{font-family:var(--font-display);font-size:7rem;font-weight:300;color:rgba(201,168,76,.06);line-height:1;margin-bottom:20px;transition:color .4s;}
-.mvv-card:hover .mvv-bg-letter{color:rgba(201,168,76,.15);}
+.mvv-bg-letter{font-family:var(--font-display);font-size:7rem;font-weight:300;color:rgba(201,168,76,.5);line-height:1;margin-bottom:20px;transition:color .4s;}
+.mvv-card:hover .mvv-bg-letter{color:rgba(201,168,76,.5);}
 .mvv-title{font-family:var(--font-display);font-size:1.7rem;color:var(--white);margin-bottom:14px;font-weight:300;}
 .mvv-text{font-size:.82rem;line-height:1.95;color:var(--text);}
 /* Intro band */
@@ -73,6 +73,7 @@
 .rv-text{font-size:.82rem;line-height:1.92;color:var(--text);margin-bottom:22px;}
 .rv-name{font-family:var(--font-display);font-size:.95rem;color:var(--gold);}
 .rv-role{font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:var(--text2);margin-top:3px;}
+.reviews-section .book-purchase-btn{margin:40px auto 0; width: fit-content;}
 /* CTA */
 .cta-band{padding:120px 70px;background:linear-gradient(135deg,var(--purple) 0%,#0e1a30 100%);text-align:center;position:relative;overflow:hidden;}
 .cta-band::before{content:'HEALING TEARS';font-family:var(--font-display);font-size:clamp(5rem,12vw,15rem);font-weight:300;color:rgba(201,168,76,.04);position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);white-space:nowrap;pointer-events:none;}
@@ -87,7 +88,7 @@
 </style>
 </head>
 <body>
-<script src="js/book.js"></script>
+<!-- <script src="js/book.js"></script> -->
 <div class="cursor-dot"></div>
 <div class="cursor-ring"></div>
 <div class="page-transition"></div>
@@ -221,6 +222,9 @@
       <div class="rv-name">Linda K.</div><div class="rv-role">Cancer Survivor</div>
     </div>
   </div>
+  <div class="book-purchase-btn" id="bpurchase">
+    <a href="contact.html" class="btn-purchase">Purchase the Book Now</a>
+  </div>
 </div>
 
 <!-- CTA -->
@@ -229,7 +233,7 @@
     <h2>Begin Your <em>Journey</em></h2>
     <p>Whether you are a survivor, a caregiver, or someone seeking meaning — Healing Tears is for you.</p>
     <div class="cta-acts">
-      <a href="contact.html" class="btn-gold">Get the Book</a>
+      <a href="contact.html" class="btn-gold">BUY YOUR BOOK NOW</a>
       <a href="contact.html" class="btn-outline">Connect with Stephanie</a>
     </div>
   </div>
@@ -279,6 +283,6 @@ tl.to('#hrule',{opacity:1,duration:.6})
   .to('#scrollInd',{opacity:1,duration:.5},'-=.3');
 </script>
 <script src="js/nav.js"></script>
-<script src="js/book.js"></script>
+<!-- <script src="js/book.js"></script> -->
 </body>
 </html>
