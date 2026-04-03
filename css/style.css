@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&display=swap');
 
 :root {
-  --navy:   #0a1628;
-  --deep:   #050d18;
+  --navy: #0a1628;
+  --deep: #050d18db;
   --gold:   #c9a84c;
   --gold2:  #e8c97a;
   --purple: #1a0e28;
@@ -125,10 +125,10 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
     content: '';
     position: absolute;
     top: 0;
-    left: 0;
+    right: -18rem;
     width: 100%;
-    height: 100%;
-    background: url("../images/oak-tree-bg.png") center center / cover no-repeat;
+    height: 1000px;
+    background: url("../images/oak-tree-bg.png") center center / contain no-repeat;
      /* Ensure it sits above the video */
     opacity: 0.30;
 }
