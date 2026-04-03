@@ -12,7 +12,12 @@
 .blog-featured{display:grid;grid-template-columns:1fr 1fr;border:1px solid rgba(201,168,76,.1);overflow:hidden;margin-bottom:26px;transition:border-color .4s;}
 .blog-featured:hover{border-color:rgba(201,168,76,.32);}
 .bf-visual{background:linear-gradient(135deg,#1a2a4a 0%,#1a0e2a 100%);display:flex;align-items:center;justify-content:center;min-height:400px;position:relative;overflow:hidden;}
-.bf-num{font-family:var(--font-display);font-size:13rem;font-weight:300;color:rgba(201,168,76,.07);line-height:1;user-select:none;}
+.bf-num{height: 100%;}
+.bf-num img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
 .bf-body{padding:56px 48px;display:flex;flex-direction:column;justify-content:center;}
 .blog-tag{font-size:.58rem;letter-spacing:.26em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;}
 .bf-body h2{font-family:var(--font-display);font-size:clamp(1.7rem,2.8vw,2.3rem);color:var(--white);font-weight:300;line-height:1.25;margin-bottom:18px;}
@@ -78,7 +83,7 @@
 
     <!-- Blog 1 — hold off per client note -->
     <div class="blog-featured" data-reveal>
-      <div class="bf-visual"><div class="bf-num">01</div></div>
+      <div class="bf-visual"><div class="bf-num"><img src="images/author-img.jpeg" alt="image" class="img-fluid"></div></div>
       <div class="bf-body">
         <div class="blog-tag">Awareness · Diagnosis</div>
         <h2>When Your Body Speaks Before You're Ready to Listen</h2>
