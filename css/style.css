@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&display=swap');
 
 :root {
-  --navy: rgb(10 22 40 / 90%);
-  --deep: #050d18db;
+  --navy: rgb(10 22 40 / 85%);
+  --deep: rgb(5 13 24 / 80%);
   --gold:   #c9a84c;
   --gold2:  #e8c97a;
   --purple: #1a0e28;
