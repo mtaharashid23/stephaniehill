@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Surviving Two Losses at Once — Stephanie Hill</title>
+<link rel="stylesheet" href="css/style.css"/>
+<style>
+/* PAGE HERO */
+.page-hero{
+  background:
+    radial-gradient(ellipse 60% 80% at 20% 80%,#1a0e2a 0%,transparent 55%),
+    radial-gradient(ellipse 55% 60% at 80% 20%,#0f2040 0%,transparent 55%),
+    var(--deep);
+}
+
+/* BLOG DETAIL */
+.blog-detail{padding:110px 70px;background:var(--deep);}
+.blog-detail-inner{max-width:860px;margin:0 auto;}
+
+/* META ROW */
+.blog-meta{display:flex;align-items:center;gap:24px;flex-wrap:wrap;margin-bottom:52px;}
+.blog-tag-inline{font-size:.58rem;letter-spacing:.26em;text-transform:uppercase;color:var(--gold);}
+.blog-meta-divider{width:1px;height:14px;background:rgba(201,168,76,.25);}
+.blog-date{font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--text2);}
+.blog-read-time{font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--text2);}
+
+/* TITLE BLOCK */
+.blog-title{font-family:var(--font-display);font-size:clamp(2.4rem,5vw,4.2rem);font-weight:300;color:var(--white);line-height:1.1;margin-bottom:20px;}
+.blog-title em{font-style:italic;color:var(--gold);}
+.blog-subtitle{font-family:var(--font-display);font-size:clamp(1rem,1.8vw,1.35rem);font-weight:300;font-style:italic;color:var(--text);line-height:1.6;margin-bottom:48px;}
+.blog-title-divider{width:60px;height:1px;background:linear-gradient(to right,var(--gold),transparent);margin-bottom:52px;}
+
+/* VISUAL — author image */
+.blog-visual{width:100%;min-height:420px;position:relative;overflow:hidden;margin-bottom:64px;border:1px solid rgba(201,168,76,.1);}
+.blog-visual img {
+    width: 100%;
+    height: 550px;
+    object-fit: cover;
+    object-position: 50% 10%;
+    display: block;
+}
+.blog-visual-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(5,13,24,0) 40%,rgba(5,13,24,.85) 100%);pointer-events:none;}
+.blog-visual-label{position:absolute;bottom:28px;left:40px;font-size:.58rem;letter-spacing:.28em;text-transform:uppercase;color:rgba(201,168,76,.7);}
+.blog-visual-tag{position:absolute;top:28px;right:40px;font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(201,168,76,.8);border:1px solid rgba(201,168,76,.25);padding:6px 16px;background:rgba(5,13,24,.55);backdrop-filter:blur(6px);}
+
+/* BACK LINK */
+.blog-back{display:inline-flex;align-items:center;gap:10px;margin-bottom:52px;font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:var(--text2);text-decoration:none;transition:color .3s,gap .3s;}
+.blog-back:hover{color:var(--gold);gap:16px;}
+
+/* BODY TEXT */
+.blog-body{}
+.blog-body p{font-size:.92rem;line-height:2.1;color:var(--text);margin-bottom:28px;}
+.blog-body p:last-child{margin-bottom:0;}
+
+/* PULL QUOTE */
+.blog-pullquote{font-family:var(--font-display);font-size:clamp(1.2rem,2.2vw,1.65rem);font-style:italic;font-weight:300;color:var(--gold);line-height:1.65;padding:32px 0 32px 30px;border-left:2px solid rgba(201,168,76,.4);margin:52px 0;}
+
+/* CLOSING THOUGHT */
+.blog-closing{margin-top:52px;padding-top:44px;border-top:1px solid rgba(201,168,76,.1);}
+.blog-closing-label{font-size:.58rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:18px;display:flex;align-items:center;gap:12px;}
+.blog-closing-label::before{content:'';width:28px;height:1px;background:var(--gold);}
+.blog-closing p{font-family:var(--font-display);font-size:clamp(1rem,1.6vw,1.25rem);font-style:italic;font-weight:300;color:var(--white);line-height:1.75;}
+
+/* AUTHOR CARD */
+.blog-author{margin-top:64px;padding-top:48px;border-top:1px solid rgba(201,168,76,.1);display:flex;align-items:center;gap:28px;flex-wrap:wrap;}
+.blog-author-img{width:72px;height:72px;border-radius:50%;overflow:hidden;border:1px solid rgba(201,168,76,.2);flex-shrink:0;}
+.blog-author-img img{width:100%;height:100%;object-fit:cover;object-position:top;}
+.blog-author-label{font-size:.55rem;letter-spacing:.26em;text-transform:uppercase;color:var(--gold);margin-bottom:6px;}
+.blog-author-name{font-family:var(--font-display);font-size:1.25rem;font-weight:300;color:var(--white);margin-bottom:6px;}
+.blog-author-bio{font-size:.78rem;line-height:1.75;color:var(--text2);max-width:520px;}
+
+/* CTA */
+.blog-cta{margin-top:80px;padding:60px 56px;background:linear-gradient(135deg,rgba(26,14,40,.9) 0%,rgba(10,22,40,.95) 100%);border:1px solid rgba(201,168,76,.12);display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap;}
+.blog-cta-text h3{font-family:var(--font-display);font-size:clamp(1.6rem,2.8vw,2.2rem);font-weight:300;color:var(--white);line-height:1.2;margin-bottom:12px;}
+.blog-cta-text h3 em{font-style:italic;color:var(--gold);}
+.blog-cta-text p{font-size:.82rem;line-height:1.8;color:var(--text);max-width:460px;}
+.blog-cta-actions{display:flex;flex-direction:column;gap:14px;align-items:flex-start;flex-shrink:0;}
+
+/* BOTTOM NAV ROW */
+.blog-nav-row{margin-top:80px;padding-top:44px;border-top:1px solid rgba(201,168,76,.08);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px;}
+.blog-nav-btn{display:inline-flex;align-items:center;gap:10px;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--text2);text-decoration:none;transition:color .3s;}
+.blog-nav-btn:hover{color:var(--gold);}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  .blog-detail{padding-left:40px;padding-right:40px;}
+  .blog-cta{padding:44px 36px;}
+}
+@media(max-width:768px){
+  .blog-detail{padding-left:22px;padding-right:22px;padding-top:80px;padding-bottom:80px;}
+  .blog-cta{padding:36px 24px;flex-direction:column;align-items:flex-start;}
+  .blog-visual img{height:280px;}
+  .blog-visual-label{display:none;}
+  .blog-pullquote{padding-left:20px;}
+  .blog-cta-actions{width:100%;}
+  .blog-cta-actions .btn-gold,.blog-cta-actions .btn-outline{width:100%;justify-content:center;}
+}
+</style>
+</head>
+<body>
+<div class="cursor-dot"></div><div class="cursor-ring"></div><div class="page-transition"></div>
+
+<div class="buy-book-bar"><a href="contact.html" class="btn-gold">Order Your Book Now</a></div>
+
+<nav id="navbar">
+  <a href="index.html" class="nav-logo">Stephanie <span>Hill</span></a>
+  <ul class="nav-links">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="book.html">About the Book</a></li>
+      <li><a href="author.html">Meet Stephanie Hill</a></li>
+      <li><a href="blog.html" class="active">Blogs &amp; Articles</a></li>
+    </ul>
+    <ul>
+      <li><a href="contact.html">Book Order Information</a></li>
+      <li><a href="speaking.html">Speaking Engagements</a></li>
+      <li><a href="future-books.html">Future Books</a></li>
+    </ul>
+  </ul>
+  <div class="hamburger" id="ham"><span></span><span></span><span></span></div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Home</a><div class="mobile-divider"></div>
+  <a href="book.html">About the Book</a><div class="mobile-divider"></div>
+  <a href="author.html">Meet Stephanie Hill</a><div class="mobile-divider"></div>
+  <a href="blog.html">Blogs &amp; Articles</a><div class="mobile-divider"></div>
+  <a href="contact.html">Book Order Information</a><div class="mobile-divider"></div>
+  <a href="speaking.html">Speaking Engagements</a><div class="mobile-divider"></div>
+  <a href="future-books.html">Future Books</a>
+</div>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="ph-bg-text">GRIEF</div>
+  <div class="ph-inner">
+    <div class="s-label">Grief · Resilience</div>
+    <h1>Surviving <em>Two Losses</em><br>at Once</h1>
+  </div>
+</div>
+
+<!-- BLOG DETAIL CONTENT -->
+<div class="blog-detail">
+  <div class="blog-detail-inner">
+
+    <!-- Back link -->
+    <a href="blog.html" class="blog-back" data-reveal>&#x2190; Back to Blogs &amp; Articles</a>
+
+    <!-- Meta -->
+    <div class="blog-meta" data-reveal>
+      <span class="blog-tag-inline">Grief · Resilience</span>
+      <div class="blog-meta-divider"></div>
+      <span class="blog-date">Article No. 02</span>
+      <div class="blog-meta-divider"></div>
+      <span class="blog-read-time">4 min read</span>
+    </div>
+
+    <!-- Title -->
+    <h1 class="blog-title" data-reveal>Surviving <em>Two Losses</em> at Once</h1>
+    <p class="blog-subtitle" data-reveal>There are moments in life that divide everything into before and after.</p>
+    <div class="blog-title-divider" data-reveal></div>
+
+    <!-- Visual — author image -->
+    <div class="blog-visual" data-reveal>
+      <img src="images/author-img.jpeg" alt="Stephanie Hill"/>
+      <div class="blog-visual-overlay"></div>
+      <div class="blog-visual-label">Healing Tears — Stephanie Hill</div>
+      <div class="blog-visual-tag">Grief · Resilience</div>
+    </div>
+
+    <!-- Body -->
+    <div class="blog-body">
+
+      <p data-reveal>For Stephanie, that moment came in a hospital bed just hours after surviving a life-threatening surgery, when she learned her twin brother had died. In an instant, survival and loss collided.</p>
+
+      <p data-reveal>Healing Tears doesn't separate these experiences. It shows how grief and physical recovery can exist at the same time, each intensifying the other. While her body struggled to stabilize, her heart was breaking in ways no medical chart could measure.</p>
+
+      <blockquote class="blog-pullquote" data-reveal>
+        "While her body struggled to stabilize, her heart was breaking in ways no medical chart could measure."
+      </blockquote>
+
+      <p data-reveal>This blog reflects on the kind of layered trauma that leaves no space to process one pain before another arrives. It speaks to those who have had to keep going not because they were ready, but because they had no choice.</p>
+
+      <p data-reveal>Stephanie's story reminds us that healing is not linear. It is messy, overlapping, and often overwhelming.</p>
+
+      <p data-reveal>But even in that complexity, there is a quiet truth: survival is not just about staying alive. It is about learning how to carry what was lost while continuing forward.</p>
+
+    </div>
+
+    <!-- Closing thought -->
+    <div class="blog-closing" data-reveal>
+      <div class="blog-closing-label">A Closing Reflection</div>
+      <p>You do not have to be fully healed to move forward. You only have to be willing to carry both — the grief and the grace — at the same time.</p>
+    </div>
+
+    <!-- Author card -->
+    <div class="blog-author" data-reveal>
+      <div class="blog-author-img">
+        <img src="images/author-img.jpeg" alt="Stephanie Hill"/>
+      </div>
+      <div class="blog-author-info">
+        <div class="blog-author-label">Written by</div>
+        <div class="blog-author-name">Stephanie Hill</div>
+        <p class="blog-author-bio">Author of <em>Healing Tears</em> — a memoir of survival, loss, and the courage to carry both. Stephanie writes with honesty about the experiences that change us forever.</p>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="blog-cta" data-reveal>
+      <div class="blog-cta-text">
+        <h3>Read the Full Story in<br><em>Healing Tears</em></h3>
+        <p>Stephanie's journey goes deeper than any single article can capture. The book explores every layer of survival, grief, and what it truly means to heal when life gives you no time to stop.</p>
+      </div>
+      <div class="blog-cta-actions">
+        <a href="contact.html" class="btn-gold">Order Your Book Now</a>
+        <a href="book.html" class="btn-outline">About the Book</a>
+      </div>
+    </div>
+
+    <!-- Bottom nav -->
+    <div class="blog-nav-row" data-reveal>
+      <a href="blog.html" class="blog-nav-btn">&#x2190; &nbsp;All Articles</a>
+      <a href="contact.html" class="blog-nav-btn">Order Your Book Now &nbsp;&#x2192;</a>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <a href="index.html" class="footer-logo">Stephanie <span>Hill</span></a>
+    <ul class="footer-nav">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="book.html">About the Book</a></li>
+        <li><a href="author.html">Meet Stephanie Hill</a></li>
+        <li><a href="blog.html">Blogs &amp; Articles</a></li>
+      </ul>
+      <ul>
+        <li><a href="contact.html">Book Order Information</a></li>
+        <li><a href="speaking.html">Speaking Engagements</a></li>
+        <li><a href="future-books.html">Future Books</a></li>
+      </ul>
+    </ul>
+    <p class="footer-copy">© 2026 Stephanie Hill. All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+<script>gsap.registerPlugin(ScrollTrigger);</script>
+<script>
+window.addEventListener('DOMContentLoaded', function () {
+
+  // Hero entrance
+  gsap.from('.ph-inner h1', { y: 70, opacity: 0, duration: 1.1, ease: 'power3.out', delay: .45 });
+  gsap.from('.ph-inner .s-label', { y: 30, opacity: 0, duration: .85, ease: 'power3.out', delay: .2 });
+
+  // Scroll reveals — set first, then animate on enter
+  gsap.utils.toArray('[data-reveal]').forEach(function (el) {
+    gsap.set(el, { y: 40, opacity: 0 });
+    ScrollTrigger.create({
+      trigger: el,
+      start: 'top 92%',
+      once: true,
+      onEnter: function () {
+        gsap.to(el, { y: 0, opacity: 1, duration: 0.9, ease: 'power3.out' });
+      }
+    });
+  });
+
+  // Pullquote border glow on scroll
+  var pq = document.querySelector('.blog-pullquote');
+  if (pq) {
+    ScrollTrigger.create({
+      trigger: pq, start: 'top 80%', once: true,
+      onEnter: function () {
+        gsap.to(pq, { borderLeftColor: 'rgba(201,168,76,1)', duration: .7, ease: 'power2.out' });
+      }
+    });
+  }
+
+  // Safety fallback — show any remaining hidden elements after 2.5s
+  setTimeout(function () {
+    document.querySelectorAll('[data-reveal]').forEach(function (el) {
+      if (parseFloat(getComputedStyle(el).opacity) < 0.1) {
+        gsap.to(el, { y: 0, opacity: 1, duration: 0.5, ease: 'power2.out' });
+      }
+    });
+  }, 2500);
+
+});
+</script>
+<script src="js/nav.js"></script>
+</body>
+</html>
