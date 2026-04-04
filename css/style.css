@@ -144,3 +144,17 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 .video-wrapper .s-label {
     justify-content: flex-start !important;
 }
+
+.rv-card {
+    filter: blur(2px);
+}
+
+.rv-card:hover {
+    filter: blur(0);    
+}
+
+.reviews-bg {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgb(26 14 40) 30%, rgb(10 22 40 / 70%) 100%);
+}
