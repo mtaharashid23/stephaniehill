@@ -125,7 +125,7 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
     content: '';
     position: absolute;
     top: 0;
-    left: 54%;
+    left: 55%;
     transform: translateX(-50%);
     width: 100%;
     height: 960px;
