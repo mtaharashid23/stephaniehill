@@ -70,28 +70,67 @@ if (ham && mob) {
   }));
 }
 
-// ── Page transitions ──
+// ── Page transitions (OUT) ──
 document.querySelectorAll('a[href]').forEach(a => {
   const href = a.getAttribute('href');
+
   if (!href || href.startsWith('#') || href.startsWith('http') || href.startsWith('mailto')) return;
+
   a.addEventListener('click', e => {
     e.preventDefault();
+
     const ov = document.querySelector('.page-transition');
-    if (!ov) { location.href = href; return; }
+
+    if (!ov) {
+      location.href = href;
+      return;
+    }
+
     gsap.to(ov, {
-      scaleY: 1, transformOrigin: 'bottom', duration: .55, ease: 'power2.inOut',
-      onComplete: () => { location.href = href; }
+      scaleY: 1,
+      transformOrigin: 'bottom',
+      duration: 0.55,
+      ease: 'power2.inOut',
+      onComplete: () => {
+        location.href = href;
+      }
     });
   });
 });
 
-// ── Page-in ──
+
+// ── Page-in FUNCTION ──
+function resetTransition() {
+  const ov = document.querySelector('.page-transition');
+  if (!ov) return;
+
+  gsap.killTweensOf(ov);
+
+  gsap.set(ov, {
+    scaleY: 0, // 🔥 force hide
+    transformOrigin: 'top'
+  });
+}
+
+
+// ── First Load ──
 window.addEventListener('DOMContentLoaded', () => {
   const ov = document.querySelector('.page-transition');
-  if (ov) {
-    gsap.set(ov, { scaleY: 1, transformOrigin: 'top' });
-    gsap.to(ov, { scaleY: 0, duration: .7, ease: 'power2.inOut', delay: .05 });
-  }
+  if (!ov) return;
+
+  gsap.set(ov, { scaleY: 1, transformOrigin: 'top' });
+
+  gsap.to(ov, {
+    scaleY: 0,
+    duration: 0.7,
+    ease: 'power2.inOut'
+  });
+});
+
+
+// 🔥 MOST IMPORTANT FIX (Back/Forward)
+window.addEventListener('pageshow', () => {
+  resetTransition(); // always reset
 });
 
 // ── Scroll reveals (data-reveal) ──
