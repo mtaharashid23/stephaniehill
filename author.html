@@ -32,8 +32,9 @@
 
     /* author intro grid */
     .author-section {
+      position: relative;
       padding: 110px 70px;
-      background: var(--deep);
+      background: linear-gradient(135deg,var(--purple) 0%,#0e1a30 100%);
     }
 
     .author-grid {
@@ -299,7 +300,7 @@
       font-family: var(--font-display);
       font-size: clamp(4rem, 10vw, 14rem);
       font-weight: 300;
-      color: rgb(201 168 76 / 20%);
+      color: rgb(201 168 76 / 10%);
       position: absolute;
       top: 50%;
       left: 50%;
@@ -349,8 +350,7 @@
     <a href="speaking.html">Speaking Engagements</a>
     <div class="mobile-divider"></div>
     <a href="future-books.html">Future Books</a>
-  </div>
-  <canvas id="particles-canvas"></canvas>
+  </div>  
   <div class="page-hero">
     <!-- Oak tree SVG background -->
     <div class="oak-vignette"></div>
@@ -374,6 +374,7 @@
   </div>
 
   <div class="author-section">
+    <canvas id="particles-canvas"></canvas>
     <div class="author-grid container">
       <!-- Before / After image -->
       <div class="author-frame" data-reveal="left">
