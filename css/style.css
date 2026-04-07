@@ -172,5 +172,5 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
     height: 100%;
     background: url(
     "../images/oak-tree-bg.png") center center / contain no-repeat;
-    opacity: 0.30;
+    opacity: 0.10;
 }
