@@ -280,6 +280,33 @@
         padding-right: 22px;
       }
     }
+
+    #particles-canvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .author-section {
+      position: relative;
+    }
+
+    .author-section::before {
+      content: 'ABOUT STEPHANIE';
+      font-family: var(--font-display);
+      font-size: clamp(4rem, 10vw, 14rem);
+      font-weight: 300;
+      color: rgb(201 168 76 / 20%);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      white-space: nowrap;
+      pointer-events: none;
+    }
   </style>
 </head>
 
@@ -323,7 +350,7 @@
     <div class="mobile-divider"></div>
     <a href="future-books.html">Future Books</a>
   </div>
-
+  <canvas id="particles-canvas"></canvas>
   <div class="page-hero">
     <!-- Oak tree SVG background -->
     <div class="oak-vignette"></div>
@@ -351,7 +378,8 @@
       <!-- Before / After image -->
       <div class="author-frame" data-reveal="left">
         <div class="ba-wrap" id="baWrap">
-          <img src="https://stephology.co/wp-content/uploads/2026/02/8_73aaf54b-204c-4ad1-84ae-df9a7151c8f1.jpg"
+          <img src="images/about-img.jpeg" alt="Stephanie" class="img-fluid">
+          <!-- <img src="https://stephology.co/wp-content/uploads/2026/02/8_73aaf54b-204c-4ad1-84ae-df9a7151c8f1.jpg"
             alt="Stephanie — Before" onerror="this.src='images/author-img.jpeg'" />
           <div class="ba-after" id="baAfter" style="width:50%;">
             <img src="https://stephology.co/wp-content/uploads/2026/02/9_f886c870-ff32-4b27-9fce-f33822076eb1.jpg"
@@ -366,10 +394,10 @@
             </div>
           </div>
           <div class="ba-label-before">Before</div>
-          <div class="ba-label-after">After</div>
+          <div class="ba-label-after">After</div> -->
         </div>
         <div class="author-border"></div>
-        <p class="author-caption">Drag to compare · Stephanie's journey</p>
+        <!-- <p class="author-caption">Drag to compare · Stephanie's journey</p> -->
       </div>
 
       <!-- Text -->
@@ -434,6 +462,97 @@
     gsap.registerPlugin(ScrollTrigger);
   </script>
   <script>
+    (function () {
+      const c = document.getElementById('particles-canvas');
+      const ctx = c.getContext('2d');
+      let W, H, pts = [],
+        shooters = [];
+
+      function resize() {
+        W = c.width = window.innerWidth;
+        H = c.height = window.innerHeight;
+      }
+      window.addEventListener('resize', resize);
+      resize();
+
+      function rnd(a, b) {
+        return Math.random() * (b - a) + a;
+      }
+      for (let i = 0; i < 130; i++) pts.push({
+        x: rnd(0, W),
+        y: rnd(0, H),
+        vx: rnd(-.18, .18),
+        vy: rnd(-.28, -.06),
+        sz: rnd(.4, 2.2),
+        a: rnd(.1, .7),
+        da: rnd(.003, .007),
+        col: Math.random() > .55 ? '201,168,76' : '245,230,180',
+        pulse: rnd(0, Math.PI * 2),
+        ps: rnd(.008, .022)
+      });
+
+      function spawnShooter() {
+        shooters.push({
+          x: rnd(0, W * .6),
+          y: rnd(0, H * .35),
+          vx: rnd(3.5, 7),
+          vy: rnd(1.5, 3),
+          life: 1,
+          tail: []
+        });
+        setTimeout(spawnShooter, rnd(4500, 11000));
+      }
+      setTimeout(spawnShooter, 2800);
+
+      function draw() {
+        ctx.clearRect(0, 0, W, H);
+        pts.forEach(p => {
+          p.pulse += p.ps;
+          p.a += p.da;
+          if (p.a > .75 || p.a < .06) p.da *= -1;
+          p.x += p.vx;
+          p.y += p.vy;
+          if (p.y < -4) p.y = H + 4;
+          if (p.x < -4) p.x = W + 4;
+          if (p.x > W + 4) p.x = -4;
+          const aa = p.a * (.7 + .3 * Math.sin(p.pulse));
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.sz, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(${p.col},${aa})`;
+          ctx.fill();
+          if (p.sz > 1.4) {
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.sz * 3.2, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(${p.col},${aa*.1})`;
+            ctx.fill();
+          }
+        });
+        shooters = shooters.filter(s => s.life > 0);
+        shooters.forEach(s => {
+          s.tail.push({
+            x: s.x,
+            y: s.y
+          });
+          if (s.tail.length > 20) s.tail.shift();
+          s.x += s.vx;
+          s.y += s.vy;
+          s.life -= .017;
+          s.tail.forEach((pt, i) => {
+            const pr = i / s.tail.length;
+            ctx.beginPath();
+            ctx.arc(pt.x, pt.y, pr * .9, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(201,168,76,${pr*s.life*.85})`;
+            ctx.fill();
+          });
+          ctx.beginPath();
+          ctx.arc(s.x, s.y, 2, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(232,201,122,${s.life})`;
+          ctx.fill();
+        });
+        requestAnimationFrame(draw);
+      }
+      draw();
+    })();
     gsap.from('.ph-inner h1', {
       y: 60,
       opacity: 0,
@@ -448,62 +567,6 @@
       ease: 'power3.out',
       delay: .2
     });
-    (function () {
-      const wrap = document.getElementById('baWrap');
-      const after = document.getElementById('baAfter');
-      const slider = document.getElementById('baSlider');
-      let dragging = false;
-
-      function setPos(pct) {
-        pct = Math.max(5, Math.min(95, pct));
-        after.style.width = pct + '%';
-        slider.style.left = pct + '%';
-      }
-      setPos(0);
-      setTimeout(() => {
-        gsap.to({
-          v: 0
-        }, {
-          v: 50,
-          duration: 1.4,
-          ease: 'power2.inOut',
-          onUpdate() {
-            setPos(this.targets()[0].v);
-          }
-        });
-      }, 800);
-      wrap.addEventListener('mousedown', e => {
-        dragging = true;
-        e.preventDefault();
-      });
-      window.addEventListener('mouseup', () => {
-        dragging = false;
-      });
-      window.addEventListener('mousemove', e => {
-        if (!dragging) return;
-        const r = wrap.getBoundingClientRect();
-        setPos(((e.clientX - r.left) / r.width) * 100);
-      });
-      wrap.addEventListener('touchstart', e => {
-        dragging = true;
-      }, {
-        passive: true
-      });
-      window.addEventListener('touchend', () => {
-        dragging = false;
-      });
-      window.addEventListener('touchmove', e => {
-        if (!dragging) return;
-        const r = wrap.getBoundingClientRect();
-        setPos(((e.touches[0].clientX - r.left) / r.width) * 100);
-      }, {
-        passive: true
-      });
-      wrap.addEventListener('click', e => {
-        const r = wrap.getBoundingClientRect();
-        setPos(((e.clientX - r.left) / r.width) * 100);
-      });
-    })();
   </script>
   <script src="js/nav.js"></script>
 </body>
