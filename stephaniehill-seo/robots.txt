@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+
+# Disallow admin/private files
+Disallow: /email.php
+Disallow: /contact-new.html
+
+# Sitemap
+Sitemap: https://stephaniehill.netlify.app/sitemap.xml
+
+# Crawl-delay for polite bots
+Crawl-delay: 10

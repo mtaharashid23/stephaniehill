@@ -1,0 +1,36 @@
+.page-hero{background:radial-gradient(ellipse 70% 70% at 50% 65%,#0f2040 0%,transparent 60%),var(--deep);}
+.blog-section{padding:110px 70px;background:var(--deep);}
+.blogs-wrap{max-width:1300px;margin:0 auto;}
+
+.blog-featured{display:grid;grid-template-columns:1fr 1fr;border:1px solid rgba(201,168,76,.1);overflow:hidden;margin-bottom:26px;transition:border-color .4s;}
+.blog-featured:hover{border-color:rgba(201,168,76,.32);}
+.bf-visual{background:linear-gradient(135deg,#1a2a4a 0%,#1a0e2a 100%);position:relative;overflow:hidden;}
+.bf-num{height: 100%;}
+.bf-num img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+.bf-body{background: var(--deep);padding:56px 48px;display:flex;flex-direction:column;justify-content:center;}
+.blog-tag{font-size:.58rem;letter-spacing:.26em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;}
+.bf-body h2{font-family:var(--font-display);font-size:clamp(1.7rem,2.8vw,2.3rem);color:var(--white);font-weight:300;line-height:1.25;margin-bottom:18px;}
+.bf-body .s-body{margin-bottom:0;}
+.read-link{display:inline-flex;align-items:center;gap:10px;margin-top:28px;font-size:.63rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);text-decoration:none;transition:gap .3s;}
+.read-link:hover{gap:18px;}
+
+.blog-cards{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:rgba(201,168,76,.06);}
+.bc{background:var(--deep);padding:48px 40px;position:relative;overflow:hidden;transition:background .4s;}
+.bc:hover{background:rgba(10,22,40,.85);}
+.bc-num{position:absolute;top:20px;right:24px;font-family:var(--font-display);font-size:5.5rem;font-weight:300;color:rgba(201,168,76,.06);line-height:1;pointer-events:none;}
+.bc h3{font-family:var(--font-display);font-size:clamp(1.4rem,2.2vw,1.9rem);color:var(--white);font-weight:300;line-height:1.3;margin-bottom:14px;}
+.bc-div{width:40px;height:1px;background:linear-gradient(to right,var(--gold),transparent);margin:16px 0;}
+.bc .s-body{margin-bottom:0;}
+
+@media(max-width:1024px){.blog-featured{grid-template-columns:1fr;}.bf-visual{min-height:220px;}.bf-body{padding:40px 32px;}.blog-cards{grid-template-columns:1fr;}.blog-section{padding-left:40px;padding-right:40px;}}
+@media(max-width:768px){.blog-section{padding-left:22px;padding-right:22px;padding-top:80px;padding-bottom:80px;}.bc{padding:36px 24px;}.bf-body{padding:32px 24px;}}
+.nav-links ul:first-child li:first-child a.active::after {    
+    display: none;
+  }
+  .nav-links ul:first-child li:first-child a.active {
+    color: var(--text);
+  }

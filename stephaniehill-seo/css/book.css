@@ -1,0 +1,237 @@
+.page-hero {
+      background: radial-gradient(ellipse 80% 70% at 50% 80%, #14244a 0%, transparent 55%), linear-gradient(180deg, var(--deep) 0%, var(--navy) 100%);
+    }
+
+    .book-section {
+      padding: 110px 70px;
+      background: var(--deep);
+    }
+
+    .book-detail {
+      max-width: 1300px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 400px 1fr;
+      gap: 90px;
+      align-items: start;
+    }
+
+    .book-cover-col {
+      position: sticky;
+      top: 110px;
+    }
+
+    .book-cover-col img {
+      width: 100%;
+      display: block;
+      box-shadow: -14px 22px 70px rgba(0, 0, 0, .85), 0 0 60px rgba(201, 168, 76, .09);
+    }
+
+    .book-meta {
+      margin-top: 28px;
+      border: 1px solid rgba(201, 168, 76, .1);
+    }
+
+    .meta-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 18px;
+      border-bottom: 1px solid rgba(201, 168, 76, .08);
+    }
+
+    .meta-row:last-child {
+      border-bottom: none;
+    }
+
+    .meta-k {
+      font-size: .6rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--text2);
+    }
+
+    .meta-v {
+      font-family: var(--font-display);
+      font-size: .95rem;
+      color: var(--white);
+    }
+
+    .book-text .s-body {
+      max-width: 580px;
+    }
+
+    /* reviews */
+    .reviews-section {
+      padding: 110px 70px;
+      background: linear-gradient(180deg, var(--navy) 0%, var(--deep) 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .reviews-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 220px;
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, transparent 100%);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .reviews-section .container,
+    .reviews-section .reviews-grid {
+      position: relative;
+      z-index: 2;
+    }
+
+    .reviews-grid {
+      max-width: 1300px;
+      margin: 56px auto 0;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .rv-card {
+      padding: 38px 30px;
+      border: 1px solid rgba(201, 168, 76, .1);
+      background: rgba(10, 22, 40, .5);
+      position: relative;
+      transition: border-color .4s, transform .4s;
+    }
+
+    .rv-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(to right, var(--gold), transparent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .55s ease;
+    }
+
+    .rv-card:hover {
+      border-color: rgba(201, 168, 76, .3);
+      transform: translateY(-5px);
+    }
+
+    .rv-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .rv-qmark {
+      font-family: var(--font-display);
+      font-size: 6.5rem;
+      line-height: .7;
+      color: rgba(201, 168, 76, .1);
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .rv-stars {
+      color: var(--gold);
+      font-size: .82rem;
+      margin-bottom: 14px;
+      letter-spacing: .1em;
+    }
+
+    .rv-text {
+      font-size: .82rem;
+      line-height: 1.92;
+      color: var(--text);
+      margin-bottom: 22px;
+    }
+
+    .rv-name {
+      font-family: var(--font-display);
+      font-size: .95rem;
+      color: var(--gold);
+    }
+
+    .rv-role {
+      font-size: .58rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--text2);
+      margin-top: 3px;
+    }
+
+    .reviews-section .book-purchase-btn {
+      margin: 40px auto 0;
+      width: fit-content;
+    }
+
+    /* order cta */
+    .order-cta {
+      padding: 110px 70px;
+      background: linear-gradient(135deg, var(--purple) 0%, #0e1a30 100%);
+      text-align: center;
+    }
+
+    .order-cta h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3.4rem);
+      font-weight: 300;
+      color: var(--white);
+      margin-bottom: 18px;
+    }
+
+    .order-cta h2 em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .order-cta p {
+      font-size: .87rem;
+      color: var(--text);
+      max-width: 500px;
+      margin: 0 auto 40px;
+      line-height: 1.95;
+    }
+
+    .order-cta-btns {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    @media(max-width:1024px) {
+      .book-detail {
+        grid-template-columns: 1fr;
+      }
+
+      .book-cover-col {
+        position: static;
+        max-width: 360px;
+      }
+
+      .reviews-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .book-section,
+      .reviews-section,
+      .order-cta {
+        padding-left: 40px;
+        padding-right: 40px;
+      }
+    }
+
+    @media(max-width:768px) {
+
+      .book-section,
+      .reviews-section,
+      .order-cta {
+        padding-left: 22px;
+        padding-right: 22px;
+        padding-top: 80px;
+        padding-bottom: 80px;
+      }
+    }

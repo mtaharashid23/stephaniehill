@@ -1,0 +1,272 @@
+.page-hero {
+      background: radial-gradient(ellipse 70% 70% at 50% 65%, #0e1a34 0%, transparent 60%), var(--deep);
+    }
+
+    .contact-section {
+      padding: 110px 70px;
+      background: var(--deep);
+    }
+
+    .contact-inner {
+      max-width: 1300px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 90px;
+    }
+
+    .contact-info .s-body {
+      max-width: 480px;
+    }
+
+    .contact-item {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 32px;
+    }
+
+    .contact-label {
+      font-size: .58rem;
+      letter-spacing: .28em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .contact-val {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      color: var(--white);
+    }
+
+    .contact-val a {
+      color: var(--gold);
+      text-decoration: none;
+    }
+
+    .contact-val a:hover {
+      text-decoration: underline;
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .form-group label {
+      font-size: .6rem;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--text2);
+    }
+
+    .form-group input,
+    .form-group textarea {
+      background: rgba(255, 255, 255, .04);
+      border: 1px solid rgba(201, 168, 76, .15);
+      color: var(--white);
+      font-family: var(--font-body);
+      font-size: .84rem;
+      padding: 14px 18px;
+      outline: none;
+      transition: border-color .3s;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: rgba(201, 168, 76, .5);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 140px;
+    }
+
+    @media(max-width:1024px) {
+      .contact-inner {
+        grid-template-columns: 1fr;
+        gap: 60px;
+      }
+
+      .contact-section {
+        padding-left: 40px;
+        padding-right: 40px;
+      }
+    }
+
+    @media(max-width:768px) {
+      .contact-section {
+        padding-left: 22px;
+        padding-right: 22px;
+        padding-top: 80px;
+        padding-bottom: 80px;
+      }
+    }
+
+    .nav-links ul:first-child li:first-child a.active::after {
+      display: none;
+    }
+
+    /* ── Thank You Overlay ───────────────────────────────────── */
+    .thankyou-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(5, 8, 20, .92);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .45s ease;
+    }
+
+    .thankyou-overlay.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .thankyou-card {
+      background: linear-gradient(145deg, rgba(14, 26, 52, .97) 0%, rgba(5, 8, 20, 1) 100%);
+      border: 1px solid rgba(201, 168, 76, .22);
+      padding: 64px 56px;
+      max-width: 540px;
+      width: 90%;
+      text-align: center;
+      position: relative;
+      transform: translateY(28px) scale(.97);
+      transition: transform .5s cubic-bezier(.22, .68, 0, 1.2);
+      box-shadow: 0 0 100px rgba(201, 168, 76, .07), 0 40px 80px rgba(0, 0, 0, .7);
+    }
+
+    .thankyou-overlay.active .thankyou-card {
+      transform: translateY(0) scale(1);
+    }
+
+    /* corner accents */
+    .thankyou-card::before,
+    .thankyou-card::after {
+      content: '';
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      border-color: rgba(201, 168, 76, .45);
+      border-style: solid;
+    }
+
+    .thankyou-card::before {
+      top: -1px;
+      left: -1px;
+      border-width: 1px 0 0 1px;
+    }
+
+    .thankyou-card::after {
+      bottom: -1px;
+      right: -1px;
+      border-width: 0 1px 1px 0;
+    }
+
+    .thankyou-icon {
+      width: 76px;
+      height: 76px;
+      border-radius: 50%;
+      border: 1px solid rgba(201, 168, 76, .35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 28px;
+      background: radial-gradient(circle, rgba(201, 168, 76, .1) 0%, transparent 70%);
+    }
+
+    .thankyou-icon svg {
+      width: 34px;
+      height: 34px;
+      stroke: var(--gold);
+    }
+
+    .thankyou-card .s-label {
+      margin-bottom: 10px;
+      letter-spacing: .25em;
+    }
+
+    .thankyou-card h2 {
+      font-family: var(--font-display);
+      font-size: 2.1rem;
+      color: var(--white);
+      font-weight: 400;
+      line-height: 1.2;
+      margin-bottom: 0;
+    }
+
+    .thankyou-card h2 em {
+      color: var(--gold);
+      font-style: italic;
+    }
+
+    .thankyou-divider {
+      width: 48px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      margin: 20px auto 18px;
+    }
+
+    .thankyou-card p {
+      font-family: var(--font-body);
+      font-size: .875rem;
+      color: var(--text2);
+      line-height: 1.85;
+      margin-bottom: 38px;
+    }
+
+    .thankyou-close {
+      display: inline-block;
+      padding: 13px 40px;
+      border: 1px solid rgba(201, 168, 76, .35);
+      color: var(--gold);
+      font-family: var(--font-body);
+      font-size: .65rem;
+      letter-spacing: .24em;
+      text-transform: uppercase;
+      cursor: pointer;
+      background: transparent;
+      transition: background .3s, border-color .3s, letter-spacing .3s;
+    }
+
+    .thankyou-close:hover {
+      background: rgba(201, 168, 76, .1);
+      border-color: var(--gold);
+      letter-spacing: .3em;
+    }
+
+    /* ── Form states ─────────────────────────────────────────── */
+    .btn-gold.loading {
+      opacity: .55;
+      pointer-events: none;
+      cursor: not-allowed;
+    }
+
+    .form-error {
+      font-size: .68rem;
+      color: #e05c5c;
+      margin-top: 2px;
+      display: none;
+      letter-spacing: .03em;
+    }
+
+    .form-group.has-error input,
+    .form-group.has-error textarea {
+      border-color: rgba(224, 92, 92, .45);
+    }
+
+    .form-group.has-error .form-error {
+      display: block;
+    }

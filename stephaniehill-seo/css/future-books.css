@@ -1,0 +1,5 @@
+.page-hero{background:radial-gradient(ellipse 70% 70% at 40% 65%,#1a0e2a 0%,transparent 55%),radial-gradient(ellipse 55% 55% at 65% 35%,#0e1a34 0%,transparent 55%),var(--deep);}
+.future-section{padding:110px 70px;background:var(--deep);}
+.future-inner{max-width:900px;margin:0 auto;}
+@media(max-width:1024px){.future-section{padding-left:40px;padding-right:40px;}}
+@media(max-width:768px){.future-section{padding-left:22px;padding-right:22px;padding-top:80px;padding-bottom:80px;}}
