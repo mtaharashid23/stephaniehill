@@ -34,7 +34,7 @@
     .author-section {
       position: relative;
       padding: 110px 70px;
-      background: linear-gradient(135deg,var(--purple) 0%,#0e1a30 100%);
+      background: linear-gradient(135deg, var(--purple) 0%, #0e1a30 100%);
     }
 
     .author-grid {
@@ -289,7 +289,7 @@
       height: 100%;
       pointer-events: none;
       z-index: 1;
-    }        
+    }
   </style>
 </head>
 
@@ -299,7 +299,9 @@
   <div class="page-transition"></div>
 
   <!-- Order Your Book Now bar -->
-  <div class="buy-book-bar"><a href="https://www.amazon.com/Healing-Tears-Survival-Stephanie-Hill/dp/B0GW74219W/ref=tmm_pap_swatch_0?_encoding=UTF8&dib_tag=se&dib=eyJ2IjoiMSJ9.qlDC2RgYLXbwNOvRh2bD6xoGFwh0Fj3Jx-Atk-GvkQeQfFy_oXy2wq7a-y7izqL77T50dEVJ_KOZ_Wy-d0UaAtgJ9bTJ0uFagwzjpJwbNgo5-7uF3fLgbxBZUp_OumLNEypDPWqYyMBj3QrziFUPq_mv3YOGh3CeGoWfZ9W0JAt53QLa1HG5xY_4xifEEibUdk0SiD3iiDMmmWhlO-MpBWUMTJYuPndLt1_3ThXPSO8.TGeDJJxp1gni-WPMxTet5qLbaJoqMSkMW9wREQKztWk&qid=1775592130&sr=1-1" target="_blank" class="btn-gold">Order Your Book Now</a></div>
+  <div class="buy-book-bar"><a
+      href="https://www.amazon.com/Healing-Tears-Survival-Stephanie-Hill/dp/B0GW74219W/ref=tmm_pap_swatch_0?_encoding=UTF8&dib_tag=se&dib=eyJ2IjoiMSJ9.qlDC2RgYLXbwNOvRh2bD6xoGFwh0Fj3Jx-Atk-GvkQeQfFy_oXy2wq7a-y7izqL77T50dEVJ_KOZ_Wy-d0UaAtgJ9bTJ0uFagwzjpJwbNgo5-7uF3fLgbxBZUp_OumLNEypDPWqYyMBj3QrziFUPq_mv3YOGh3CeGoWfZ9W0JAt53QLa1HG5xY_4xifEEibUdk0SiD3iiDMmmWhlO-MpBWUMTJYuPndLt1_3ThXPSO8.TGeDJJxp1gni-WPMxTet5qLbaJoqMSkMW9wREQKztWk&qid=1775592130&sr=1-1"
+      target="_blank" class="btn-gold">Order Your Book Now</a></div>
 
   <nav id="navbar">
     <a href="index.html" class="nav-logo">Stephanie <span>Hill</span></a>
@@ -332,7 +334,7 @@
     <a href="speaking.html">Speaking Engagements</a>
     <div class="mobile-divider"></div>
     <a href="future-books.html">Future Books</a>
-  </div>  
+  </div>
   <div class="page-hero">
     <!-- Oak tree SVG background -->
     <div class="oak-vignette"></div>
@@ -344,7 +346,7 @@
   </div>
 
   <!-- VIDEO SECTION -->
-  <div class="video-section">
+  <!-- <div class="video-section">
     <div class="video-inner">
       <div class="video-wrapper">
         <div class="s-label" data-reveal style="justify-content:center;margin-bottom:28px;">Watch &amp; Listen</div>
@@ -353,7 +355,7 @@
         </video>
       </div>
     </div>
-  </div>
+  </div> -->
 
   <div class="author-section">
     <canvas id="particles-canvas"></canvas>
@@ -361,7 +363,10 @@
       <!-- Before / After image -->
       <div class="author-frame" data-reveal="left">
         <div class="ba-wrap" id="baWrap">
-          <img src="images/about-img.jpeg" alt="Stephanie" class="img-fluid">
+          <video class="author-video" controls autoplay muted loop playsinline>
+            <source src="https://stephaniehill.netlify.app/videos/book-video.mp4" type="video/mp4">
+          </video>
+          <!-- <img src="images/about-img.jpeg" alt="Stephanie" class="img-fluid"> -->
           <!-- <img src="https://stephology.co/wp-content/uploads/2026/02/8_73aaf54b-204c-4ad1-84ae-df9a7151c8f1.jpg"
             alt="Stephanie — Before" onerror="this.src='images/author-img.jpeg'" />
           <div class="ba-after" id="baAfter" style="width:50%;">
