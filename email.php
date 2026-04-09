@@ -28,7 +28,7 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 }
 
 // Recipient
-$to = 'james@primedsign.com';
+$to = 'info@stephaniehillauthor.com';
 
 // Email subject
 $mail_subject = 'New Contact Form Submission: ' . $subject;

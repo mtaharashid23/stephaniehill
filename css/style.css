@@ -614,17 +614,34 @@ body::after {
     height: auto;
 }
 
-.book-card-wrapper {
+.book-sell-wrapper {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    align-items: center;
 }
 
 .book-card {
     text-align: center;
 }
 
-.book-card h3{
+.book-sell-content h2.s-heading.mb-5{
     font-size: clamp(2.2rem, 4vw, 3rem);
     margin: 1rem 0;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.mb-5 {
+    margin-bottom: 1rem;
+}
+
+.btn-group {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-start;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
 }
