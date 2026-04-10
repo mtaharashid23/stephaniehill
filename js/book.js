@@ -214,49 +214,72 @@
 
   /* PARTICLES */
   const canvas = document.getElementById('pl-canvas');
-  const ctx    = canvas.getContext('2d');
+  const ctx = canvas.getContext('2d');
   let W, H, pts = [];
-  function resizeCanvas(){ W=canvas.width=window.innerWidth; H=canvas.height=window.innerHeight; }
+
+  function resizeCanvas() {
+    W = canvas.width = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+  }
   window.addEventListener('resize', resizeCanvas);
   resizeCanvas();
-  function rnd(a,b){ return Math.random()*(b-a)+a; }
-  for(let i=0;i<90;i++) pts.push({
-    x:rnd(0,W),y:rnd(0,H),vx:rnd(-.15,.15),vy:rnd(-.25,-.05),
-    sz:rnd(.4,1.9),a:rnd(.1,.6),da:rnd(.003,.007),
-    col:Math.random()>.5?'201,168,76':'245,230,180',
-    pulse:rnd(0,Math.PI*2),ps:rnd(.008,.022)
+
+  function rnd(a, b) {
+    return Math.random() * (b - a) + a;
+  }
+  for (let i = 0; i < 90; i++) pts.push({
+    x: rnd(0, W),
+    y: rnd(0, H),
+    vx: rnd(-.15, .15),
+    vy: rnd(-.25, -.05),
+    sz: rnd(.4, 1.9),
+    a: rnd(.1, .6),
+    da: rnd(.003, .007),
+    col: Math.random() > .5 ? '201,168,76' : '245,230,180',
+    pulse: rnd(0, Math.PI * 2),
+    ps: rnd(.008, .022)
   });
   let raf;
-  function drawParticles(){
-    ctx.clearRect(0,0,W,H);
-    pts.forEach(p=>{
-      p.pulse+=p.ps; p.a+=p.da;
-      if(p.a>.72||p.a<.05) p.da*=-1;
-      p.x+=p.vx; p.y+=p.vy;
-      if(p.y<-4)p.y=H+4; if(p.x<-4)p.x=W+4; if(p.x>W+4)p.x=-4;
-      const aa=p.a*(.7+.3*Math.sin(p.pulse));
-      ctx.beginPath(); ctx.arc(p.x,p.y,p.sz,0,Math.PI*2);
-      ctx.fillStyle=`rgba(${p.col},${aa})`; ctx.fill();
+
+  function drawParticles() {
+    ctx.clearRect(0, 0, W, H);
+    pts.forEach(p => {
+      p.pulse += p.ps;
+      p.a += p.da;
+      if (p.a > .72 || p.a < .05) p.da *= -1;
+      p.x += p.vx;
+      p.y += p.vy;
+      if (p.y < -4) p.y = H + 4;
+      if (p.x < -4) p.x = W + 4;
+      if (p.x > W + 4) p.x = -4;
+      const aa = p.a * (.7 + .3 * Math.sin(p.pulse));
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.sz, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(${p.col},${aa})`;
+      ctx.fill();
     });
-    raf=requestAnimationFrame(drawParticles);
+    raf = requestAnimationFrame(drawParticles);
   }
   drawParticles();
 
   /* SEQUENCE */
-  const book      = document.getElementById('pl-book');
+  const book = document.getElementById('pl-book');
   const stageText = document.getElementById('pl-stage-text');
-  const progress  = document.getElementById('pl-progress');
-  const dots      = document.querySelectorAll('#book-preloader .pl-dot');
+  const progress = document.getElementById('pl-progress');
+  const dots = document.querySelectorAll('#book-preloader .pl-dot');
 
   function setStage(label, pct, dotIdx, rotY) {
     /* update text */
     stageText.style.opacity = '0';
-    setTimeout(()=>{ stageText.textContent = label; stageText.style.opacity = '1'; }, 320);
+    setTimeout(() => {
+      stageText.textContent = label;
+      stageText.style.opacity = '1';
+    }, 320);
     /* rotate book */
     book.style.transform = `rotateY(${rotY}deg)`;
     /* progress + dots */
     progress.style.width = pct;
-    dots.forEach((d,i)=> d.classList.toggle('active', i===dotIdx));
+    dots.forEach((d, i) => d.classList.toggle('active', i === dotIdx));
   }
 
   /*
@@ -267,19 +290,28 @@
   book.style.transform = 'rotateY(180deg)';
   book.style.transition = 'none'; /* instant start — no transition */
   /* Force reflow then re-enable transition */
-  requestAnimationFrame(()=>{
+  requestAnimationFrame(() => {
     book.style.transition = '';
     setStage('Back Cover', '50%', 0, 180);
   });
 
   /* Stage 2 — flip to front after 2.4s */
-  setTimeout(()=> setStage('Front Cover', '100%', 1, 0), 2400);
+  setTimeout(() => setStage('Front Cover', '100%', 1, 0), 2400);
 
   /* Exit after 4.4s */
-  setTimeout(()=>{
+  setTimeout(() => {
     el.classList.add('pl-exit');
     cancelAnimationFrame(raf);
-    setTimeout(()=>{ el.remove(); document.body.style.overflow=''; }, 950);
+
+    setTimeout(() => {
+      el.remove();
+      document.body.style.overflow = '';
+
+      // ✅ IMPORTANT: trigger GSAP animation here
+      window.dispatchEvent(new Event('preloaderDone'));
+
+    }, 950);
+
   }, 4400);
 
 })();
