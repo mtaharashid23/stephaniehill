@@ -297,28 +297,38 @@ window.addEventListener('preloaderDone', () => {
     defaults: { ease: 'power3.out' }
   });
 
-  // 1️⃣ Book side
-  tl.to('.hero-book-side', {
-      x: '0%',
-      opacity: 1,
-      duration: 1
-    })
+  // 1️⃣ Book side — skipped when the preloader's 3D book has already landed in place,
+  //    or when the book column is hidden (tablet/mobile), so the text starts right away
+  const bookSide = document.querySelector('.hero-book-side');
+  const skipBook = window.__plHandoff || !bookSide || getComputedStyle(bookSide).display === 'none';
+  if (skipBook) {
+    gsap.set('.hero-book-side', { x: '0%', opacity: 1 });
+    document.getElementById('bwrap').style.animation = 'bookFloat 6s ease-in-out infinite';
+  } else {
+    tl.to('.hero-book-side', {
+        x: '0%',
+        opacity: 1,
+        duration: 1
+      })
 
-    // bwrap same time
-    .to('#bwrap', {
-      duration: 1.1,
-      ease: 'power2.out',
-      onComplete() {
-        document.getElementById('bwrap').style.animation =
-          'bookFloat 6s ease-in-out infinite';
-      }
-    }, '<')
+      // bwrap same time
+      .to('#bwrap', {
+        duration: 1.1,
+        ease: 'power2.out',
+        onComplete() {
+          document.getElementById('bwrap').style.animation =
+            'bookFloat 6s ease-in-out infinite';
+        }
+      }, '<');
+  }
+
+  tl
 
     // 2️⃣ Text
     .to('.hero-text', {
       x: '0%',
-      duration: 1
-    }, '-=0.3')
+      duration: skipBook ? 0.01 : 1
+    }, skipBook ? 0 : '-=0.3')
 
     // rest animations
     .to('#hrule', { opacity: 1, duration: .6 })
